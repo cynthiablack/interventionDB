@@ -2,7 +2,7 @@
   "name": "intervention-db",
   "version": "1.0.0",
   "description": "InterventionDB is a full-stack application designed to help K-12 teachers enter, track, and analyze student intervention data.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node app",
     "dev": "cross-env NODE_ENV=development nodemon app"
@@ -29,7 +29,7 @@
     "express-session": "^1.17.3",
     "method-override": "^3.0.0",
     "moment": "^2.29.4",
-    "mongoos": "^0.0.1-security",
+    "mongoose": "^6.6.2",
     "morgan": "^1.10.0",
     "passport": "^0.6.0",
     "passport-google-oauth20": "^2.0.0"
