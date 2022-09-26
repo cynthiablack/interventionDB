@@ -9,6 +9,10 @@ InterventionDB is a full-stack application designed to help K-12 teachers enter,
 
 **Tech used:** EJS, CSS, Javascript, Express, Node.js, MongoDB
 
+Registered users can add, edit, and delete student intervention data. Intervention data is linked to user-entered interventions and user-created student IDs. Collected intervention data includes student ID, date of delivery, teacher notes, and any assessment data.
+
+User authentication is handled by Passport middleware (google-oauth-20).
+
 ## Optimizations
 
 - 
@@ -16,6 +20,7 @@ InterventionDB is a full-stack application designed to help K-12 teachers enter,
 
 - local user account option
 - longitudinal student data tracking
+- assessment scheduling
 - crowd-sourced user ratings of effectiveness
 - aggregated student data to rank interventions by average measured growth
 - enhanced search, including source, free vs. paid, community rating
