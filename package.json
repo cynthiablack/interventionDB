@@ -1,0 +1,37 @@
+{
+  "name": "intervention-db",
+  "version": "1.0.0",
+  "description": "InterventionDB is a full-stack application designed to help K-12 teachers enter, track, and analyze student intervention data.",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node app",
+    "dev": "cross-env NODE_ENV=development nodemon app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cynthiablack/interventionDB.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cynthiablack/interventionDB/issues"
+  },
+  "homepage": "https://github.com/cynthiablack/interventionDB#readme",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "connect-mongo": "^4.6.0",
+    "dotenv": "^16.0.2",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "method-override": "^3.0.0",
+    "moment": "^2.29.4",
+    "mongoos": "^0.0.1-security",
+    "morgan": "^1.10.0",
+    "passport": "^0.6.0",
+    "passport-google-oauth20": "^2.0.0"
+  }
+}
