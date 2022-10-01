@@ -21,6 +21,12 @@ app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
+// Routes
+app.use('/', require('./routes/index'))
+
 const PORT = process.env.PORT || 5000
 
-app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`))
+app.listen(
+    PORT, 
+    console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)
+)
