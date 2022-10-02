@@ -7,33 +7,6 @@ html {
   box-sizing: inherit;
 }
 
-/** Layout **/
-
-    /** Navbar **/
-    nav {
-        background-color: #5c5c5c;
-        color: #FFFF;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 1.5vw;
-    }
-
-    nav a {
-        text-decoration: none;
-    }
-
-    nav li {
-        list-style-type: none;
-    }
-
-    /** Footer **/
-    footer {
-        display: flex;
-        justify-content: space-between;
-        padding: 0 1.5vw;
-    }
-
 /** Typography **/
 body {
     font-family: 'Mulish', sans-serif;
@@ -42,52 +15,4 @@ body {
 h1{
     font-family: 'Lalezar', cursive;
     text-align: center;
-}
-
-h2,
-.submit {
-    background-color: #586F7C;
-    color: #F4F4F9;
-    margin-bottom: 0;
-    padding-bottom: 0;
-    text-align: center;
-}
-
-form, table {
-    border-spacing: 0px;
-    width: 100%;
-}
-
-input {
-    font-size: 0.8rem;
-    height: 3.5vh;
-    margin: 0.5vh 0.25vw;
-    width: 15%;
-}
-
-.submit {
-    border-radius: 0.25em;
-    text-transform: uppercase;
-    width: 8%;
-}
-
-td, th {
-    border: 1px solid #586F7C;
-    font-size: 1rem;
-    padding: 0 .75em;
-    vertical-align: top;
-    text-align: center;
-}
-
-th {
-    background-color: #C1CDD3;
-    font-weight: 800;
-}
-
-tr:hover {
-    background-color: #B8DBD9;
-}
-
-.fa {
-    color: #586F7C;
 }
