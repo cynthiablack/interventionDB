@@ -1,18 +1,22 @@
-/* apply a natural box layout model to all elements, but allowing components to change */
-html {
-  box-sizing: border-box;
+/* Layout */
+.login-container {
+  margin-top: 8vh;
+  text-align: center;
+  width: 25%;
 }
 
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-/** Typography **/
+/* Typography */
 body {
     font-family: 'Mulish', sans-serif;
 }
 
-h1{
+h1, h2, h3 {
     font-family: 'Lalezar', cursive;
     text-align: center;
+}
+
+/* Images */
+.logo {
+  display: inline;
+  max-width: 8%;
 }
