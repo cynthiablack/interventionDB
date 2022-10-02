@@ -1,4 +1,8 @@
 /* Layout */
+.footer-container {
+  margin: 0 1vw 2vh 1vw;
+}
+
 .login-container {
   margin-top: 8vh;
   text-align: center;
@@ -10,9 +14,13 @@ body {
     font-family: 'Mulish', sans-serif;
 }
 
-h1, h2, h3 {
+h1, h2, h3, .title {
     font-family: 'Lalezar', cursive;
     text-align: center;
+}
+
+.title {
+  font-size: 5ch;
 }
 
 /* Images */
