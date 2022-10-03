@@ -28,3 +28,7 @@ h1, h2, h3, .title {
   display: inline;
   max-width: 8%;
 }
+
+footer .logo {
+  width: 1vw;
+}
