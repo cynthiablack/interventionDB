@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const UserSchema = new mongoose.Schema({
+const InterventionRecordSchema = new mongoose.Schema({
   activity: {
     type: String,
   },
@@ -8,7 +8,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
   },
   duration: {
-    type: Integer,
+    type: Number,
   },
   assessmentGiven: {
     type: Boolean,
