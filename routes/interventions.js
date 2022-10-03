@@ -2,20 +2,20 @@ const express = require('express')
 const router = express.Router()
 const { ensureAuth } = require('../middleware/auth')
 
-const Student = require('../models/Student')
+const Intervention = require('../models/Intervention')
 
-// @desc    Show add student page
-// @route   GET /students/add
+// @desc    Show add intervention page
+// @route   GET /interventions/add
 router.get('/add', ensureAuth, (req, res) => {
-  res.render('students/add')
+  res.render('interventions/add')
 })
 
-// @desc    Process add student
-// @route   POST /students
+// @desc    Process add intervention
+// @route   POST /interventions
 router.post('/', ensureAuth, async (req, res) => {
     try {
       req.body.user = req.user.id
-      await Student.create(req.body)
+      await Intervention.create(req.body)
       res.redirect('/dashboard')
     } catch (err) {
       console.error(err)
