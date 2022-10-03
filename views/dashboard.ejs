@@ -6,7 +6,7 @@
     <a class="teal btn left" href="/interventions/add"><i class="fa-solid fa-plus"></i><span> Add intervention</span></a>
 </div>
 <h2>Current Students</h2>
-<% if (students > 0) { %>
+<% if (students.length > 0) { %>
     <table class="striped">
         <thead>
             <tr>
@@ -19,9 +19,9 @@
             <tbody>
                 <% for(var i=0; i<students.length; i++) { %>
                     <tr>
-                        <td><%= students[i].firstName %> <% students[i].lastName %></td>
-                        <td><%= interventionRecord.date %></td>
-                        <td><%= interventionRecord.title %></td>
+                        <td><%= students[i].firstName %> <%= students[i].lastName %></td>
+                        <td></td>
+                        <td></td>
                         <td></td>
                     </tr>
                  <% } %>

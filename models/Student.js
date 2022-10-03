@@ -4,11 +4,11 @@ const StudentSchema = new mongoose.Schema({
   studentId: {
     type: String,
   },
-  FirstName: {
+  firstName: {
     type: String,
     required: true,
   },
-  LastName: {
+  lastName: {
     type: String,
     required: true,
   },
