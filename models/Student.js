@@ -4,13 +4,32 @@ const StudentSchema = new mongoose.Schema({
   studentId: {
     type: String,
   },
-  firstName: {
+  FirstName: {
     type: String,
     required: true,
   },
-  lastName: {
+  LastName: {
     type: String,
     required: true,
+  },
+  interventionRecord: {
+    title: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Intervention",
+    },
+    activity: {
+      type: String,
+    },
+    anecdotalNotes: {
+      type: String,
+    },
+    duration: {
+      type: Number,
+    },
+    assessmentGiven: {
+      type: Boolean,
+      default: false,
+    },
   },
   createdAt: {
     type: Date,

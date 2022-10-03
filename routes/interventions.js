@@ -3,6 +3,8 @@ const router = express.Router()
 const { ensureAuth } = require('../middleware/auth')
 
 const Intervention = require('../models/Intervention')
+const InterventionRecord = require('../models/InterventionRecord')
+const Student = require('../models/Student')
 
 // @desc    Show add intervention page
 // @route   GET /interventions/add

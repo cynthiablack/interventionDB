@@ -1,16 +1,17 @@
+<%- include('../partials/header') -%>
 <h3>Add Student</h3>
     <div class="row">
         <form action="/students" method="POST" class="col s12">
             <div class="row">
                 <div class="input-field">
-                    <input type="text" id="firstName" name="firstName">
+                    <input type="text" id="firstName" name="firstName" required>
                     <label for="firstName">First Name</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field">
-                    <input type="text" id="lastName" name="lastName">
+                    <input type="text" id="lastName" name="lastName" required>
                     <label for="lastName">Last Name</label>
                 </div>
             </div>
@@ -21,3 +22,4 @@
         </div>
     </form>
 </div>
+<%- include('../partials/footer') -%>

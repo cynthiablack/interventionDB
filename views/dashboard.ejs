@@ -19,7 +19,7 @@
             <tbody>
                 <% for(var i=0; i<students.length; i++) { %>
                     <tr>
-                        <td><%= students.firstName %> <% students.lastName %></td>
+                        <td><%= students[i].firstName %> <% students[i].lastName %></td>
                         <td><%= interventionRecord.date %></td>
                         <td><%= interventionRecord.title %></td>
                         <td></td>
