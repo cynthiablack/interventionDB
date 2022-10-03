@@ -1,6 +1,10 @@
 const mongoose = require('mongoose')
 
 const InterventionRecordSchema = new mongoose.Schema({
+  title: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Intervention",
+  }
   activity: {
     type: String,
   },
@@ -14,7 +18,7 @@ const InterventionRecordSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  createdAt: {
+  date: {
     type: Date,
     default: Date.now,
   },

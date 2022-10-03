@@ -1,5 +1,31 @@
 <%- include('partials/header') -%>
 <%- include('partials/navbar') -%>
 <h1>Dashboard</h1>
-<p>Sample text</p>
+<h2>Current Students</h2>
+<% if (students > 0) { %>
+    <table class="striped">
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Last Intervention Date</th>
+                <th>Current Intervention</th>
+                <th></th>
+            </tr>
+        </thead>
+            <tbody>
+                <% for(var i=0; i<students.length; i++) { %>
+                    <tr>
+                        <td><%= students.firstName %> <% students.lastName %></td>
+                        <td><%= interventionRecord.date %></td>
+                        <td><%= interventionRecord.title %></td>
+                        <td></td>
+                    </tr>
+                 <% } %>
+            </tbody>
+    </table>
+    <%} else { %>
+    <p>Please add a student to enter intervention data. </p>
+    <% } %>
+
+
 <%- include('partials/footer') -%>
