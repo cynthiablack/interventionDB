@@ -65,7 +65,7 @@ app.use(function (req, res, next) {
 
 // Routes
 app.use('/', mainRoutes);
-app.use('/', studentRoutes);
+app.use('/students', studentRoutes);
 
 const PORT = process.env.PORT || 5000
 

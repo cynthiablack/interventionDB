@@ -5,5 +5,29 @@
 <%- include('partials/addstudent') -%>
     <a class="teal btn left" href="/interventions/add"><i class="fa-solid fa-plus"></i><span> Add intervention</span></a>
 </div>
+<% if (students.length > 0) { %>
+    <table class="striped">
+       <thead>
+           <tr>
+               <th>Student Name</th>
+               <th>Last Intervention Date</th>
+               <th>Current Intervention</th>
+               <th></th>
+           </tr>
+       </thead>
+           <tbody>
+               <% for(var i=0; i<students.length; i++) { %>
+                   <tr>
+                    <td><%= students[i].firstName %> <%= students[i].lastName %></td>
+                       <td></td>
+                        <td></td>
+                        <td></td>
+                   </tr>
+                <% } %>
+           </tbody>
+   </table>
+   <%} else { %>
+    <p>Please add a student to enter intervention data. </p>
+    <% } %>
 
 <%- include('partials/footer') -%>
