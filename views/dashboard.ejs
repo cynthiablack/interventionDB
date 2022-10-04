@@ -21,8 +21,10 @@
                     <tr>
                         <td><%= students[i].firstName %> <%= students[i].lastName %></td>
                         <td></td>
-                        <td></td>
-                        <td><a class="waves-effect waves-light btn-small"><i class="fa-regular fa-pencil"></i> edit</a>
+                        <td><button type="submit" data-target="#modal-edit-user-<%= user._id %>"> <!-- ✅ each buttons links to its corresponding modal -->
+                            Edit
+                          </button></td>
+                        <td><a class="waves-effect waves-light btn-small" href="/students/edit/:<%= students[i].id %>>"><i class="fa-regular fa-pencil"></i> edit</a>
                             <a class="waves-effect deep-orange btn-small"><i class="fa-solid fa-user-xmark"></i> delete</a>
                         </td>
                     </tr>
@@ -31,6 +33,10 @@
     </table>
     <%} else { %>
     <p>Please add a student to enter intervention data. </p>
+
+    <div id="modal-edit-user-<%= user._id %>"> <!-- ✅ unique id for each modal -->
+        <!-- Modal content -->
+      </div>
     <% } %>
 
 

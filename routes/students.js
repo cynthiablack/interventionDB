@@ -25,8 +25,28 @@ router.post('/', ensureAuth, async (req, res) => {
 
   // @desc    Show edit student page
 // @route   GET /students/edit/:id
-router.get('/edit/:id', ensureAuth, (req, res) => {
-  res.render('students/add')
+router.get('/edit/:id', ensureAuth, async (req, res) => {
+  try {
+    const student = await Student.findOne({
+      _id: req.params.id,
+    }).lean()
+
+    if (!student) {
+      return res.render('error/404')
+    }
+
+    if (student.user != req.user.id) {
+      res.redirect('/dashboard')
+    } else {
+      console.log(students.id)
+      res.render('students/edit', {
+        student,
+      })
+    }
+  } catch (err) {
+    console.error(err)
+    return res.render('error/500')
+  }
 })
 
   // @desc    Show all students
@@ -41,12 +61,6 @@ router.get('/', ensureAuth, async (req, res) => {
     console.error(err)
     res.render('error/500')
   }
-})
-
-  // @desc    Show one student
-// @route   GET /students/:id
-router.get('/:id', ensureAuth, (req, res) => {
-  res.send('one student')
 })
 
 module.exports = router

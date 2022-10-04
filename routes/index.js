@@ -26,4 +26,30 @@ router.get('/dashboard', ensureAuth, async (req, res) => {
     }
   })
 
+// @desc    Show edit student page
+// @route   GET /students/edit/:id
+router.get('/students/edit/:id', ensureAuth, async (req, res) => {
+  try {
+    const student = await Student.findOne({
+      _id: req.params.id,
+    }).lean()
+
+    if (!student) {
+      return res.render('error/404')
+    }
+
+    if (student.user != req.user.id) {
+      res.redirect('/dashboard')
+    } else {
+      console.log(_id)
+      res.render('students/edit', {
+        student,
+      })
+    }
+  } catch (err) {
+    console.error(err)
+    return res.render('error/500')
+  }
+})
+
 module.exports = router
