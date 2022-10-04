@@ -17,6 +17,10 @@
   text-align: center;
 }
 
+.is-hidden {
+  display: none;
+}
+
 .login-container {
   width: 40%;
 }
