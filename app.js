@@ -11,6 +11,7 @@ const MongoStore = require('connect-mongo');
 const connectDB = require('./config/db');
 
 const mainRoutes = require('./routes/main');
+const studentRoutes = require('./routes/students');
 
 // Use .env file in config folder
 require("dotenv").config ({ path: './config/config.env' });
@@ -64,6 +65,7 @@ app.use(function (req, res, next) {
 
 // Routes
 app.use('/', mainRoutes);
+app.use('/', studentRoutes);
 
 const PORT = process.env.PORT || 5000
 
