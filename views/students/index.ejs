@@ -2,22 +2,18 @@
 <%- include('../partials/navbar') -%>
 <h1>Current Students</h1>
 <div class="row">
-    <% if (students > 0) { %>
+    <% if (students.length > 0) { %>
         <table class="striped">
             <thead>
                 <tr>
                     <th>Student Name</th>
-                    <th>Last Intervention Date</th>
-                    <th>Current Intervention</th>
                     <th></th>
                 </tr>
             </thead>
                 <tbody>
                     <% for(var i=0; i<students.length; i++) { %>
                         <tr>
-                            <td><%= students[i].firstName %> <% students[i].lastName %></td>
-                            <td><%= interventionRecord.date %></td>
-                            <td><%= interventionRecord.title %></td>
+                            <td><%= students[i].firstName %> <%= students[i].lastName %></td>
                             <td></td>
                         </tr>
                      <% } %>
