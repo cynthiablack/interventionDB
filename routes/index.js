@@ -18,7 +18,6 @@ router.get('/dashboard', ensureAuth, async (req, res) => {
     try {
       const students = await Student.find({ user: req.user.id }).lean()
       res.render('dashboard', {
-        name: req.user.displayName,
         students,
       })
     } catch (err) {
