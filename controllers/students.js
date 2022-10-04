@@ -1,5 +1,4 @@
 const Student = require("../models/Student");
-const InterventionRecord = require("../models/InterventionRecord");
 
 module.exports = {
   getDashboard: async (req, res) => {

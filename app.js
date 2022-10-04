@@ -12,6 +12,7 @@ const connectDB = require('./config/db');
 
 const mainRoutes = require('./routes/main');
 const studentRoutes = require('./routes/students');
+const interventionRoutes = require('./routes/interventions');
 
 // Use .env file in config folder
 require("dotenv").config ({ path: './config/config.env' });
@@ -66,6 +67,7 @@ app.use(function (req, res, next) {
 // Routes
 app.use('/', mainRoutes);
 app.use('/students', studentRoutes);
+app.use('/interventions', interventionRoutes);
 
 const PORT = process.env.PORT || 5000
 

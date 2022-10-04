@@ -1,0 +1,46 @@
+const Intervention = require("../models/Intervention");
+
+module.exports = {
+    getInterventionList: async (req, res) => {
+        try {
+          const interventions = await Intervention.find({ user: req.user.id });
+          res.render("interventions.ejs", { interventions: interventions, user: req.user });
+        } catch (err) {
+          console.log(err);
+        }
+      },
+  getIntervention: async (req, res) => {
+    try {
+      const intervention = await Intervention.findById(req.params.id);
+      res.render("interventions.ejs", { intervention: intervention, user: req.user });
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  createIntervention: async (req, res) => {
+    try {
+      await Intervention.create({
+        title: req.body.title,
+        source: req.body.source,
+        targetArea: req.body.targetArea,
+        user: req.user.id,
+      });
+      console.log("Intervention has been added!");
+      res.redirect("/interventions");
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  deleteIntervention: async (req, res) => {
+    try {
+      // Find intervention by id
+      let intervention = await Intervention.findById({ _id: req.params.id });
+      // Delete intervention from db
+      await Intervention.remove({ _id: req.params.id });
+      console.log("Deleted Intervention");
+      res.redirect("/interventions");
+    } catch (err) {
+      res.redirect("/interventions");
+    }
+  },
+};
