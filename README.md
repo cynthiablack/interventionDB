@@ -20,7 +20,7 @@ User authentication is handled by Passport middleware (google-oauth-20). Templat
 - 
 ## Planned Enhancements
 
-- local user account option
+- Google oauth 2.0 user account option
 - longitudinal student data tracking
 - assessment scheduling
 - crowd-sourced user ratings of effectiveness

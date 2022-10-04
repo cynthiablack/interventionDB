@@ -1,12 +1,39 @@
 /* Layout */
+.centered {
+  text-align: center;
+}
+
+.clear {
+  clear: both;
+}
+
 .footer-container {
   margin: 0 1vw 2vh 1vw;
 }
 
+.form-container, 
 .login-container {
   margin-top: 8vh;
   text-align: center;
-  width: 25%;
+}
+
+.login-container {
+  width: 40%;
+}
+
+.overflow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+
+.overflow h3 {
+  padding-left: 0.5vw;
+}
+
+.space-below {
+  margin-bottom: 2vh;
 }
 
 /* Typography */
@@ -26,7 +53,7 @@ h1, h2, h3, .title {
 /* Images */
 .logo {
   display: inline;
-  max-width: 8%;
+  max-width: 2.5vw;
 }
 
 footer .logo {

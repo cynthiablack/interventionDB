@@ -1,5 +1,5 @@
 module.exports = {
-    getDashboard: (req, res) => {
-      res.render("dashboard.ejs");
+    getIndex: (req, res) => {
+      res.render("index.ejs");
     },
   };

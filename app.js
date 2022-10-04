@@ -4,10 +4,12 @@ const path = require('path');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
+const flash = require('express-flash')
 const passport = require('passport');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const connectDB = require('./config/db');
+
 const mainRoutes = require('./routes/main');
 
 // Use .env file in config folder
@@ -51,6 +53,9 @@ app.use(
 app.use(passport.initialize())
 app.use(passport.session())
 
+//Use flash messages for errors, info, ect...
+app.use(flash());
+
 // Set global variable
 app.use(function (req, res, next) {
   res.locals.user = req.user || null
@@ -58,11 +63,7 @@ app.use(function (req, res, next) {
 })
 
 // Routes
-app.use("/", mainRoutes);
-//app.use('/', require('./routes/index'))
-//app.use('/auth', require('./routes/auth'))
-//app.use('/students', require('./routes/students'))
-//app.use('/interventions', require('./routes/interventions'))
+app.use('/', mainRoutes);
 
 const PORT = process.env.PORT || 5000
 
