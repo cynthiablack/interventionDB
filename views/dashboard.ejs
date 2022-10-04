@@ -5,39 +5,6 @@
     <a class="teal btn left" href="/students/add"><i class="fa-solid fa-plus"></i><span> Add student</span></a>
     <a class="teal btn left" href="/interventions/add"><i class="fa-solid fa-plus"></i><span> Add intervention</span></a>
 </div>
-<h2>Current Students</h2>
-<% if (students.length > 0) { %>
-    <table class="striped">
-        <thead>
-            <tr>
-                <th>Student Name</th>
-                <th>Last Intervention Date</th>
-                <th>Current Intervention</th>
-                <th></th>
-            </tr>
-        </thead>
-            <tbody>
-                <% for(var i=0; i<students.length; i++) { %>
-                    <tr>
-                        <td><%= students[i].firstName %> <%= students[i].lastName %></td>
-                        <td></td>
-                        <td><button type="submit" data-target="#modal-edit-user-<%= user._id %>"> <!-- ✅ each buttons links to its corresponding modal -->
-                            Edit
-                          </button></td>
-                        <td><a class="waves-effect waves-light btn-small" href="/students/edit/:<%= students[i].id %>>"><i class="fa-regular fa-pencil"></i> edit</a>
-                            <a class="waves-effect deep-orange btn-small"><i class="fa-solid fa-user-xmark"></i> delete</a>
-                        </td>
-                    </tr>
-                 <% } %>
-            </tbody>
-    </table>
-    <%} else { %>
-    <p>Please add a student to enter intervention data. </p>
-
-    <div id="modal-edit-user-<%= user._id %>"> <!-- ✅ unique id for each modal -->
-        <!-- Modal content -->
-      </div>
-    <% } %>
 
 
 <%- include('partials/footer') -%>

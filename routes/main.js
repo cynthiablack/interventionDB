@@ -1,19 +1,22 @@
 const express = require('express')
 const router = express.Router()
-const { ensureAuth, ensureGuest } = require('../middleware/auth')
+const homeController = require("../controllers/home");
+//const { ensureAuth, ensureGuest } = require('../middleware/auth')
 
 const Student = require('../models/Student')
 
 // @desc    Login/Landing page
 // @route   GET /
-router.get('/', ensureGuest, (req, res) => {
+/*router.get('/', ensureGuest, (req, res) => {
     res.render('login', {
         layout: 'login',
     })
-})
+})*/
 
 // @desc    Dashboard
 // @route   GET /dashboard
+router.get("/", homeController.getDashboard);
+/*
 router.get('/dashboard', ensureAuth, async (req, res) => {
     try {
       const students = await Student.find({ user: req.user.id }).lean()
@@ -24,11 +27,11 @@ router.get('/dashboard', ensureAuth, async (req, res) => {
       console.error(err)
       res.render('error/500')
     }
-  })
+  })*/
 
 // @desc    Show edit student page
 // @route   GET /students/edit/:id
-router.get('/students/edit/:id', ensureAuth, async (req, res) => {
+/*router.get('/students/edit/:id', ensureAuth, async (req, res) => {
   try {
     const student = await Student.findOne({
       _id: req.params.id,
@@ -51,5 +54,5 @@ router.get('/students/edit/:id', ensureAuth, async (req, res) => {
     return res.render('error/500')
   }
 })
-
+*/
 module.exports = router
