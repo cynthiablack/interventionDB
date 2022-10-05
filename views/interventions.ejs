@@ -1,7 +1,7 @@
 <%- include('partials/header') -%>
 <%- include('partials/navbar') -%>
 <h1>Interventions</h1>
-<div class="container">
+<div class="container top-right" id="add-intervention">
 <%- include('partials/addintervention') -%>
 </div>
     <table class="striped">
@@ -10,14 +10,16 @@
                <th>Intervention Title</th>
                <th>Source</th>
                <th>Target Area</th>
+               <th></th>
            </tr>
        </thead>
            <tbody>
                <% for(var i=0; i<interventions.length; i++) { %>
                    <tr>
-                    <td><%= interventions[i].title %></td>
-                    <td><%= interventions[i].source %></td>
-                    <td><%= interventions[i].targetArea %></td>
+                    <td><a href="/interventions/<%=interventions[i]._id%>"><%= interventions[i].title %></a></td>
+                    <td><a href="/interventions/<%=interventions[i]._id%>"><%= interventions[i].source %></a></td>
+                    <td><a href="/interventions/<%=interventions[i]._id%>"><%= interventions[i].targetArea %></a></td>
+                    <td><a href="/interventions/<%=interventions[i]._id%>"  class="btn blue lighten-2 btn-small">Edit</a></td>
                    </tr>
                 <% } %>
            </tbody>

@@ -1,4 +1,10 @@
 /* Layout */
+#add-intervention {
+  position: relative;
+  left: 18vw;
+  width: 50%;
+}
+
 .button-container {
   display: flex;
   align-items: top;
@@ -12,6 +18,11 @@
 
 .clear {
   clear: both;
+}
+
+#edit-intervention {
+  position: relative;
+  bottom: 5vh;
 }
 
 #edit-student {

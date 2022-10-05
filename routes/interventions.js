@@ -8,6 +8,6 @@ router.get("/:id", ensureAuth, interventionController.getIntervention);
 
 router.post("/createIntervention", interventionController.createIntervention);
 
-router.delete("/deleteIntervention/:id", interventionController.deleteIntervention);
+router.put("/editIntervention/:id", interventionController.editIntervention);
 
 module.exports = router;

@@ -6,31 +6,32 @@
         <%- include('partials/addstudent') -%>
     </div>
 </div>
-<% if (students.length > 0) { %>
-    <table class="striped">
-       <thead>
-           <tr>
-               <th>Student Name</th>
-               <th>Current Intervention</th>
-               <th>Last Intervention Date</th>
-               <th></th>
-               <th></th>
-           </tr>
-       </thead>
-           <tbody>
-               <% for(var i=0; i<students.length; i++) { %>
-                   <tr>
-                    <td><a href="/students/<%=students[i]._id%>"><%= students[i].firstName %> <%= students[i].lastName %></a></td>
-                       <td><a href="/students/<%=students[i]._id%>"></a></td>
+<div class="container">
+    <% if (students.length > 0) { %>
+        <table class="striped">
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Current Intervention</th>
+                <th>Last Intervention Date</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+            <tbody>
+                <% for(var i=0; i<students.length; i++) { %>
+                    <tr>
+                        <td><a href="/students/<%=students[i]._id%>"><%= students[i].firstName %> <%= students[i].lastName %></a></td>
                         <td><a href="/students/<%=students[i]._id%>"></a></td>
-                        <td><a href="/students/<%=students[i]._id%>"></a></td>
-                        <td> <a href="/students/<%=students[i]._id%>" class="btn blue lighten-2 btn-small">Profile</a></td>
-                    </tr>
-                <% } %>
-           </tbody>
-   </table>
+                            <td><a href="/students/<%=students[i]._id%>"></a></td>
+                            <td><a href="/students/<%=students[i]._id%>"></a></td>
+                            <td> <a href="/students/<%=students[i]._id%>" class="btn blue lighten-2 btn-small">Profile</a></td>
+                        </tr>
+                    <% } %>
+            </tbody>
+    </table>
    <%} else { %>
     <p>Please add a student to enter intervention data. </p>
     <% } %>
-
+</div>
 <%- include('partials/footer') -%>

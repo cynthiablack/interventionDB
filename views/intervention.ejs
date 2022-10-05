@@ -1,0 +1,43 @@
+<%- include('partials/header') -%>
+<%- include('partials/navbar') -%>
+<div class="container centered">
+    <table>
+        <thead>
+            <th>Title</th>
+            <th>Source</th>
+            <th>Target Area</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <td><%= intervention.title %></td>
+            <td><%=intervention.source%></td>
+            <td><%=intervention.targetArea%></td>
+            <td>
+                  <div class="container form-container" id="edit-intervention">
+                    <div class="card-content">
+                        <details>
+                            <summary class="blue lighten-2 btn btn-small"><i class="fa-solid fa-pencil"></i> Edit Intervention</summary>
+                                <form action="/interventions/editIntervention/<%=intervention.id%>?_method=PUT" method="POST">
+                                    <div class="mb-3">
+                                    <label for="title" class="form-label">Title</label>
+                                    <input type="text" class="form-control" id="title" name="title" value="<%=intervention.title%>">
+                                    </div>
+                                <div class="mb-3">
+                                    <label for="source" class="form-label">Source</label>
+                                    <input type="text" class="form-control" id="source" name="source" value="<%=intervention.source%>">
+                                    </div>
+                                    <div class="mb-3">
+                                    <label for="targetArea" class="form-label">targetArea</label>
+                                    <input type="text" class="form-control" id="targetArea" name="targetArea" value="<%=intervention.targetArea%>">
+                                    </div>
+                                    <button type="submit" class="blue lighten-2 btn btn-small space-below">Update Intervention</button>
+                                </form>
+                        </details>
+                    </div>
+                  </div>
+                            </td>
+        </tbody>
+    </table>
+</div>
+
+<%- include('partials/footer') -%>

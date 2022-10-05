@@ -12,7 +12,7 @@ module.exports = {
   getIntervention: async (req, res) => {
     try {
       const intervention = await Intervention.findById(req.params.id);
-      res.render("interventions.ejs", { intervention: intervention, user: req.user });
+      res.render("intervention.ejs", { intervention: intervention, user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -31,16 +31,16 @@ module.exports = {
       console.log(err);
     }
   },
-  deleteIntervention: async (req, res) => {
+  editIntervention: async (req, res) => {
     try {
-      // Find intervention by id
-      let intervention = await Intervention.findById({ _id: req.params.id });
-      // Delete intervention from db
-      await Intervention.remove({ _id: req.params.id });
-      console.log("Deleted Intervention");
-      res.redirect("/interventions");
+      await Intervention.findOneAndUpdate(
+        { _id: req.params.id },
+          {...req.body }
+      );
+      console.log("Intervention updated");
+      res.redirect(`/interventions/${req.params.id}`);
     } catch (err) {
-      res.redirect("/interventions");
+      console.log(err);
     }
   },
 };
