@@ -1,10 +1,23 @@
 /* Layout */
+.button-container {
+  display: flex;
+  align-items: top;
+  justify-content: center;
+  width: 40%;
+}
+
 .centered {
   text-align: center;
 }
 
 .clear {
   clear: both;
+}
+
+#edit-student {
+  position: relative;
+  bottom: 8vh;
+  left: 4vw;
 }
 
 .footer-container {

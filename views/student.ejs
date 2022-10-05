@@ -1,37 +1,34 @@
 <%- include('partials/header') -%>
 <%- include('partials/navbar') -%>
 <h1><%= student.firstName %> <%= student.lastName %>'s Profile</h1>
+<%if(student.user == user.id){ %>
 <div class="row">
-  <div class="container col s7 push-s4">
-    <%if(student.user == user.id){ %>
-      <div class="container form-container" id="edit-student">
-        <div class="card-content">
-            <details>
-                <summary class="blue lighten-2 btn btn-small"><i class="fa-solid fa-user-pen"></i> Edit <%= student.firstName %> <%= student.lastName %></summary>
-                <form action="/students/editStudent/<%=student.id%>?_method=PUT" method="POST">
-                <div class="mb-3">
-                    <label for="firstName" class="form-label">First Name</label>
-                    <input type="text" class="form-control" id="firstName" name="firstName" value="<%=student.firstName%>">
-                </div>
-                <div class="mb-3">
-                  <label for="lastName" class="form-label">Last Name</label>
-                  <input type="text" class="form-control" id="lastName" name="lastName" value="<%=student.lastName%>">
+  <div class="container button-container">
+    <div class="container form-container" id="edit-student">
+      <div class="card-content">
+        <details>
+          <summary class="blue lighten-2 btn btn-small"><i class="fa-solid fa-user-pen"></i> Edit Student</summary>
+            <form action="/students/editStudent/<%=student.id%>?_method=PUT" method="POST">
+              <div class="mb-3">
+                <label for="firstName" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="firstName" name="firstName" value="<%=student.firstName%>">
               </div>
-                <button type="submit" class="blue lighten-2 btn btn-small space-below">Update Student</button>
-              </form>
-              </details>
-        </div>
+             <div class="mb-3">
+              <label for="lastName" class="form-label">Last Name</label>
+              <input type="text" class="form-control" id="lastName" name="lastName" value="<%=student.lastName%>">
+              </div>
+              <button type="submit" class="blue lighten-2 btn btn-small space-below">Update Student</button>
+            </form>
+        </details>
+      </div>
     </div>
-      <%}%>
-  </div>
-  <div class="container col s7 push-s6">
-    <%if(student.user == user.id){ %>
+    <div class="container">
       <form action="/students/deleteStudent/<%=student.id%>?_method=DELETE" method="POST">
-        <button class="btn  deep-orange darken-4 btn-small" type="submit"><i class="fa-sharp fa-solid fa-user-slash"></i>Delete <%= student.firstName %> <%= student.lastName %></button>
+        <button class="btn  deep-orange darken-4 btn-small" type="submit"><i class="fa-sharp fa-solid fa-user-slash"></i>Delete Student</button>
       </form>
-      <%}%>
+    </div>
   </div>
 </div>
-
+<%}%>
 
 <%- include('partials/footer') -%>
