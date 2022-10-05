@@ -1,0 +1,31 @@
+<%- include('partials/header') -%>
+<%- include('partials/navbar') -%>
+<h1>Intervention Records</h1>
+<div class="container">
+<%- include('partials/addrecord') -%>
+</div>
+    <table class="striped">
+       <thead>
+           <tr>
+                <th>Student Name</th>
+               <th>Intervention Title</th>
+               <th>Activity</th>
+               <th>Duration</th>
+               <th>Anecdotal Notes</th>
+               <th></th>
+           </tr>
+       </thead>
+           <tbody>
+            <% for(var i=0; i<interventionrecords.length; i++) { %>
+                <tr>
+                 <td><%= students[i].firstName %> <%= students[i].lastName %></td>
+                    <td><%= interventionrecords[i].title %> </td>
+                     <td><%= interventionrecords[i].activity %></td>
+                     <td><%= interventionrecords[i].duration %></td>
+                     <td><%= interventionrecords[i].anecdotalNotes %></td>
+                </tr>
+             <% } %>
+           </tbody>
+   </table>
+
+<%- include('partials/footer') -%>

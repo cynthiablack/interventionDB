@@ -12,6 +12,7 @@
                <th>Last Intervention Date</th>
                <th>Current Intervention</th>
                <th></th>
+               <th></th>
            </tr>
        </thead>
            <tbody>
@@ -20,7 +21,37 @@
                     <td><%= students[i].firstName %> <%= students[i].lastName %></td>
                        <td></td>
                         <td></td>
-                        <td></td>
+                        <td>
+                            <div class="td-margin">
+                                <div class="container form-container" id="edit-student">
+                                    <div class="card-content">
+                                        <details>
+                                            <summary class="blue lighten-2 btn btn-small"><i class="fa-solid fa-user-pen"></i></summary>
+                                            <form action="/students/editStudent/<%=id%>?_method=PUT" method="POST">
+                                            <div class="mb-3">
+                                                <label for="firstName" class="form-label">First Name</label>
+                                                <input type="text" class="form-control" id="firstName" name="firstName" value="<%=students[i].firstName%>">
+                                            </div>
+                                            <div class="mb-3">
+                                              <label for="lastName" class="form-label">Last Name</label>
+                                              <input type="text" class="form-control" id="lastName" name="lastName" value="<%=students[i].lastName%>">
+                                          </div>
+                                            <button type="submit" class="blue lighten-2 btn btn-small space-below">Update Student</button>
+                                          </form>
+                                          </details>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="td-wrapper">
+                                <form
+                              action="/students/deleteStudent/<%= students[i].id %>?_method=DELETE"
+                              method="POST">
+                              <button class="btn  deep-orange darken-4 btn-small" type="submit"><i class="fa-sharp fa-solid fa-user-slash"></i></button>
+                            </form>
+                            </div>
+                            </td>
                    </tr>
                 <% } %>
            </tbody>

@@ -40,6 +40,15 @@
   margin-bottom: 2vh;
 }
 
+.td-margin {
+  position: relative;
+  bottom: 4vh;
+}
+
+.td-wrapper {
+  margin: auto 0;
+}
+
 /* Typography */
 body {
     font-family: 'Mulish', sans-serif;
