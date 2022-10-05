@@ -5,7 +5,7 @@ module.exports = {
   getDashboard: async (req, res) => {
     try {
       const students = await Student.find({ user: req.user.id });
-      res.render("students.ejs", { students: students, user: req.user });
+      res.render("dashboard.ejs", { students: students, user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -13,9 +13,8 @@ module.exports = {
   getStudent: async (req, res) => {
     try {
       const student = await Student.findById(req.params.id);
-      const students = await Student.find({ user: req.user.id });
-      const records = await InterventionRecord.find({record: req.params.id}).sort({ createdAt: "desc" }).lean();
-      res.render("students.ejs", { students: students, student: student, user: req.user, records: records });
+//      const records = await InterventionRecord.find({record: req.params.id}).sort({ createdAt: "desc" }).lean();
+      res.render("student.ejs", { student: student, user: req.user, /*records: records*/ });
     } catch (err) {
       console.log(err);
     }
@@ -35,18 +34,16 @@ module.exports = {
   },
   editStudent: async (req, res) => {
     try {
-      const student = await Student.findById({ id: req.params.id });
       await Student.findOneAndUpdate(
         { _id: req.params.id },
-          {
-            $set: {
-              firstName: req.body.firstName,
-              lastName: req.body.lastName
-            }
-          }
+      
+        
+          {...req.body }
+         
+      
       );
       console.log("Student updated");
-      res.redirect('/dashboard');
+      res.redirect(`/students/${req.params.id}`);
     } catch (err) {
       console.log(err);
     }

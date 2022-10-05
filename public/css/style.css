@@ -25,6 +25,10 @@
   width: 40%;
 }
 
+nav {
+  padding: 0 1vw;
+}
+
 .overflow {
   display: flex;
   align-items: center;
@@ -49,6 +53,12 @@
   margin: auto 0;
 }
 
+.top-right {
+  position: relative;
+  top: -18vh;
+  right: -32vw;
+}
+
 /* Typography */
 body {
     font-family: 'Mulish', sans-serif;
@@ -57,6 +67,10 @@ body {
 h1, h2, h3, .title {
     font-family: 'Lalezar', cursive;
     text-align: center;
+}
+
+table a {
+  color: inherit;
 }
 
 .title {
