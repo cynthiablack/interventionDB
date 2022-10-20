@@ -10,7 +10,6 @@ module.exports = {
         record: req.body.record,
         student: req.params.id,
         user: req.user.id,
-        interventions: req.interventions.id,
       });
       console.log("Intervention data has been added!");
       res.redirect("/student/"+req.params.id);

@@ -1,4 +1,5 @@
 const Student = require("../models/Student");
+const Intervention = require("../models/Intervention");
 const InterventionRecord = require("../models/InterventionRecord");
 
 module.exports = {
@@ -12,9 +13,10 @@ module.exports = {
   },
   getStudent: async (req, res) => {
     try {
+      const interventions = await Intervention.find({ user: req.user.id });
       const student = await Student.findById(req.params.id);
       const records = await InterventionRecord.find({student: req.params.id}).sort({ createdAt: "desc" }).lean();
-      res.render("student.ejs", { student: student, user: req.user, records: records });
+      res.render("student.ejs", { student: student, user: req.user, records: records, interventions: interventions });
     } catch (err) {
       console.log(err);
     }
