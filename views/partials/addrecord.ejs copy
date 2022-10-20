@@ -2,16 +2,10 @@
     <div class="card-content">
         <details>
             <summary class="teal btn right floating"><span> Add intervention record</span></summary>
-            <form action="/record/createRecord/<%= student._id %>" method="POST">
+            <form action="/interventionrecords/createRecord/<%= student._id %>" method="POST">
                 <span class="lead centered">Entering new record for <%= student.firstName %> <%= student.lastName %></span>
-                    <div class="form-group">
-                        <label for="title">Intervention Title</label>
-                            <select id="title" name="title" class="form-control" placeholder="" required>
-                                <% for(let i=0; i<interventions.length; i++) { %>
-                                <option value="<%= interventions[i].title %>"><%= interventions[i].title %></option>
-                                <% } %>
-                              </select>
-                          </div>
+                <div class="mb-3">
+                    <input title="title" value="<%= intervention.title =%>" >
                 </div>
                 <div class="mb-3">
                     <label for="activity" class="form-label">Activity</label>

@@ -5,11 +5,7 @@ const InterventionRecordSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Intervention",
   },
-  firstName: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Student",
-  },
-  lastName: {
+  student: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Student",
   },

@@ -69,7 +69,7 @@ app.use(function (req, res, next) {
 app.use('/', mainRoutes);
 app.use('/students', studentRoutes);
 app.use('/interventions', interventionRoutes);
-app.use('/recordss', recordRoutes);
+app.use('/record', recordRoutes);
 
 const PORT = process.env.PORT || 5000
 

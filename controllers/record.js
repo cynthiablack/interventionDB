@@ -3,39 +3,43 @@ const Intervention = require("../models/Intervention");
 const Student = require("../models/Student");
 
 module.exports = {
-  getRecords: async (req, res) => {
+  createRecord: async (req, res) => {
+    const interventions = await Intervention.findById(req.params.id);
     try {
-      const records = await InterventionRecord.find({ user: req.user.id });
-      res.render("records.ejs", { records: records, user: req.user });
+      await InterventionRecord.create({
+        record: req.body.record,
+        student: req.params.id,
+        user: req.user.id,
+        interventions: req.interventions.id,
+      });
+      console.log("Intervention data has been added!");
+      res.redirect("/student/"+req.params.id);
     } catch (err) {
       console.log(err);
     }
   },
   getRecord: async (req, res) => {
     try {
-      const record = await InterventionRecord.findById(req.params.id);
       const intervention = await Intervention.findById(req.params.id);
+      const records = await InterventionRecord.find({record: req.params.id}).sort({ createdAt: "desc" }).lean();
       const student = await Student.findById(req.params.id);
-      res.render("records.ejs", { record: record, user: req.user, student: student });
+      res.render("record.ejs", { student: student, user: req.user, records: records, intervention: intervention });
     } catch (err) {
       console.log(err);
     }
   },
-  createRecord: async (req, res) => {
-    const student = await Student.findById(req.params.id);
-    const intervention = await Intervention.findById(req.params.id);
+  editRecord: async (req, res) => {
     try {
-      await Record.create({
-        activity: req.body.activity,
-        anecdotalNotes: req.body.anecdotalNotes,
-        duration: req.body.duration,
-        assessmentGiven: req.body.assessmentGiven,
-        title: req.intervention.id,
-        student: req.student.id,
-        user: req.user.id,
-      });
-      console.log("Record has been added!");
-      res.redirect("/records");
+      await Record.findOneAndUpdate(
+        { _id: req.params.id },
+      
+        
+          {...req.body }
+         
+      
+      );
+      console.log("Record updated");
+      res.redirect(`/records/${req.params.id}`);
     } catch (err) {
       console.log(err);
     }
@@ -43,13 +47,13 @@ module.exports = {
   deleteRecord: async (req, res) => {
     try {
       // Find record by id
-      let record = await Record.findById({ _id: req.params.id });
+      let record = await InterventionRecord.findById({ _id: req.params.id });
       // Delete record from db
-      await Record.remove({ _id: req.params.id });
-      console.log("Deleted record");
-      res.redirect("/records");
+      await InterventionRecord.deleteOne({ _id: req.params.id });
+      console.log("Deleted intervention record");
+      res.redirect(`/student/${req.params.id}`);
     } catch (err) {
-      res.redirect("/records");
+      res.redirect("/dashboard");
     }
   },
 };
