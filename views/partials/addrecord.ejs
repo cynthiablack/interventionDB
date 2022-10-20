@@ -6,16 +6,25 @@
                 <span class="lead centered">Entering new record for <%= student.firstName %> <%= student.lastName %></span>
                     <div class="form-group">
                         <label for="title">Intervention Title</label>
-                            <select id="title" name="title" class="form-control" placeholder="" required>
+                            <select id="title" name="title" class="form-control" placeholder="title" required>
                                 <% for(let i=0; i<interventions.length; i++) { %>
                                 <option value="<%= interventions[i].title %>"><%= interventions[i].title %></option>
                                 <% } %>
                               </select>
                           </div>
                 </div>
+                <div class="input-field col s12">
+                    <select>
+                      
+                      <option value="1">Option 1</option>
+                      <option value="2">Option 2</option>
+                      <option value="3">Option 3</option>
+                    </select>
+                    <label>Materialize Select</label>
+                  </div>
                 <div class="mb-3">
                     <label for="activity" class="form-label">Activity</label>
-                    <input type="text" class="form-control" id="activity" name="activity">
+                    <input type="text" class="input-field form-control" id="activity" name="activity">
                 </div>
                 <div class="mb-3">
                     <label for="duration" class="form-label">Duration</label>
