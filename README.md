@@ -1,4 +1,5 @@
 # InterventionDB
+
 InterventionDB is a full-stack application designed to help K-12 teachers enter, track, and analyze student intervention data.
 
 **Link to project:** htttps://interventiondb.com
@@ -17,7 +18,8 @@ User authentication is handled by Passport middleware (google-oauth-20). Templat
 
 ## Optimizations
 
-- 
+-
+
 ## Planned Enhancements
 
 - Google oauth 2.0 user account option
@@ -27,8 +29,8 @@ User authentication is handled by Passport middleware (google-oauth-20). Templat
 - aggregated student data to rank interventions by average measured growth
 - enhanced search, including source, free vs. paid, community rating
 - Beta tester requests:
-    - integration with Google Classroom
-    - enhanced reporting
+  - integration with Google Classroom
+  - enhanced reporting
 
 ## Lessons Learned:
 
