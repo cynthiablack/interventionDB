@@ -4,7 +4,7 @@ InterventionDB is a full-stack application designed to help K-12 teachers enter,
 
 **Link to project:** htttps://interventiondb.com
 
-![Site Preview Image]()
+![Site Preview Image](https://github.com/cynthiablack/interventionDB/blob/main/InterventionDB.png)
 
 ## How It's Made:
 
