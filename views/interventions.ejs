@@ -5,6 +5,31 @@
     <%- include('partials/navbar') -%>
     <main class="container">
         <h1>Interventions</h1>
+        <div class="row s2 offset-s10">
+            <!-- Modal Trigger -->
+          <button data-target="modal1" class="btn-small red darken-1 right modal-trigger"><span><i class="material-icons">add</i> Add</span></button>
+        
+          <!-- Modal Structure -->
+          <div id="modal1" class="modal">
+            <div class="modal-content">
+                <form action="/interventions/createIntervention" method="POST">
+                    <div class="input-field">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" name="title">
+                    </div>
+                    <div class="input-field">
+                      <label for="source" class="form-label">Source</label>
+                      <input type="text" class="form-control" id="source" name="source">
+                  </div>
+                  <div class="input-field">
+                    <label for="targetArea" class="form-label">Target Area</label>
+                    <input type="text" id="targetArea" name="targetArea">
+                </div>
+                    <button type="submit" class="btn green darken-4 space-below">Add Intervention</button>
+                  </form>
+            </div>
+          </div>
+           </div>
     <table class="striped responsive-table">
        <thead>
            <tr>
@@ -26,31 +51,6 @@
            </tbody>
    </table>
    <br>
-   <div class="row s2 offset-s10">
-    <!-- Modal Trigger -->
-  <button data-target="modal1" class="btn-small red darken-1 right modal-trigger"><span><i class="material-icons">add</i> Add</span></button>
-
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-        <form action="/interventions/createIntervention" method="POST">
-            <div class="input-field">
-                <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" id="title" name="title">
-            </div>
-            <div class="input-field">
-              <label for="source" class="form-label">Source</label>
-              <input type="text" class="form-control" id="source" name="source">
-          </div>
-          <div class="input-field">
-            <label for="targetArea" class="form-label">Target Area</label>
-            <input type="text" id="targetArea" name="targetArea">
-        </div>
-            <button type="submit" class="btn green darken-4 space-below">Add Intervention</button>
-          </form>
-    </div>
-  </div>
-   </div>
     </main>
     <%- include('partials/footer') -%>
 

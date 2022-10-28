@@ -1,37 +1,68 @@
-<%- include('partials/header') -%>
-<%- include('partials/navbar') -%>
-<h1><%= user.userName %>'s Class</h1>
-<div class="container">
-    <div class="container top-right">
-        <%- include('partials/addstudent') -%>
-    </div>
-</div>
-<div class="container">
-    <% if (students.length > 0) { %>
-        <table class="striped">
-        <thead>
-            <tr>
-                <th>Student Name</th>
-                <th>Current Intervention</th>
-                <th>Last Intervention Date</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-            <tbody>
-                <% for(var i=0; i<students.length; i++) { %>
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/header') -%>
+    <body>
+    <%- include('partials/navbar') -%>
+    <main class="container">
+        <h1><%= user.userName %>'s Class</h1>
+        <div class="row s2 offset-s8">
+        <!-- Modal Trigger -->
+          <button data-target="modal1" class="btn-small red darken-1 right modal-trigger"><span><i class="material-icons">person_add</i> Add</span></button>
+          <!-- Modal Structure -->
+            <div id="modal1" class="modal">
+            <div class="modal-content">
+                <form action="/students/createStudent" method="POST">
+                            <div class="input-field">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" id="firstName" name="firstName">
+                            </div>
+                            <div class="input-field">
+                              <label for="lastName" class="form-label">Last Name</label>
+                              <input type="text" id="lastName" name="lastName">
+                          </div>
+                            <button type="submit" class="btn green darken-4 space-below">Add Student</button>
+                </form>
+            </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <% if (students.length > 0) { %>
+                <table class="striped">
+                <thead>
                     <tr>
-                        <td><a href="/students/<%=students[i]._id%>"><%= students[i].firstName %> <%= students[i].lastName %></a></td>
-                        <td><a href="/students/<%=students[i]._id%>"></a></td>
-                            <td><a href="/students/<%=students[i]._id%>"></a></td>
-                            <td><a href="/students/<%=students[i]._id%>"></a></td>
-                            <td> <a href="/students/<%=students[i]._id%>" class="btn blue lighten-2 btn-small">Profile</a></td>
-                        </tr>
-                    <% } %>
-            </tbody>
-    </table>
-   <%} else { %>
-    <p>Please add a student to enter intervention data. </p>
-    <% } %>
-</div>
-<%- include('partials/footer') -%>
+                        <th>Student Name</th>
+                        <th>Current Intervention</th>
+                        <th>Last Intervention Date</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                    <tbody>
+                        <% for(var i=0; i<students.length; i++) { %>
+                            <tr>
+                                <td><a href="/students/<%=students[i]._id%>"><%= students[i].firstName %> <%= students[i].lastName %></a></td>
+                                <td><a href="/students/<%=students[i]._id%>"></a></td>
+                                    <td><a href="/students/<%=students[i]._id%>"></a></td>
+                                    <td><a href="/students/<%=students[i]._id%>"></a></td>
+                                    <td> <a href="/students/<%=students[i]._id%>" class="btn light-green btn-small">Profile</a></td>
+                                </tr>
+                            <% } %>
+                    </tbody>
+            </table>
+           <%} else { %>
+            <p>Please add a student to enter intervention data. </p>
+            <% } %>
+        </div>
+        <br>
+    </main>
+    <%- include('partials/footer') -%>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.modal');
+            M.Modal.init(elems, modal1);
+        });
+    </script>
+</body>
+</html>
