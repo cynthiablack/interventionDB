@@ -1,21 +1,21 @@
 <div class="container form-container" id="add-intervention">
     <div class="card-content">
         <details>
-            <summary class="teal btn right floating"><span> Add intervention</span></summary>
+            <summary class="btn green darken-4 right floating"><span> Add intervention</span></summary>
             <form action="/interventions/createIntervention" method="POST">
-            <div class="mb-3">
+            <div class="input-field">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control" id="title" name="title">
             </div>
-            <div class="mb-3">
+            <div class="input-field">
               <label for="source" class="form-label">Source</label>
               <input type="text" class="form-control" id="source" name="source">
           </div>
-          <div class="mb-3">
+          <div class="input-field">
             <label for="targetArea" class="form-label">Target Area</label>
-            <input type="text" class="form-control" id="targetArea" name="targetArea">
+            <input type="text" id="targetArea" name="targetArea">
         </div>
-            <button type="submit" class="btn btn-teal space-below">Add Intervention</button>
+            <button type="submit" class="btn green darken-4 space-below">Add Intervention</button>
           </form>
           </details>
     </div>
