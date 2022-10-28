@@ -1,10 +1,11 @@
-<%- include('partials/header') -%>
-<%- include('partials/navbar') -%>
-<h1>Interventions</h1>
-<div class="container top-right" id="add-intervention">
-<%- include('partials/addintervention') -%>
-</div>
-    <table class="striped">
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/header') -%>
+<body>
+    <%- include('partials/navbar') -%>
+    <main class="container">
+        <h1>Interventions</h1>
+    <table class="striped responsive-table">
        <thead>
            <tr>
                <th>Intervention Title</th>
@@ -19,10 +20,45 @@
                     <td><a href="/interventions/<%=interventions[i]._id%>"><%= interventions[i].title %></a></td>
                     <td><a href="/interventions/<%=interventions[i]._id%>"><%= interventions[i].source %></a></td>
                     <td><a href="/interventions/<%=interventions[i]._id%>"><%= interventions[i].targetArea %></a></td>
-                    <td><a href="/interventions/<%=interventions[i]._id%>"  class="btn blue lighten-2 btn-small">Edit</a></td>
+                    <td><a href="/interventions/<%=interventions[i]._id%>"  class="btn light-green btn-small"><i class="material-icons">edit</i></a></td>
                    </tr>
                 <% } %>
            </tbody>
    </table>
+   <br>
+   <div class="row s2 offset-s10">
+    <!-- Modal Trigger -->
+  <button data-target="modal1" class="btn-small red darken-1 right modal-trigger"><span><i class="material-icons">add</i> Add</span></button>
 
-<%- include('partials/footer') -%>
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+        <form action="/interventions/createIntervention" method="POST">
+            <div class="input-field">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title">
+            </div>
+            <div class="input-field">
+              <label for="source" class="form-label">Source</label>
+              <input type="text" class="form-control" id="source" name="source">
+          </div>
+          <div class="input-field">
+            <label for="targetArea" class="form-label">Target Area</label>
+            <input type="text" id="targetArea" name="targetArea">
+        </div>
+            <button type="submit" class="btn green darken-4 space-below">Add Intervention</button>
+          </form>
+    </div>
+  </div>
+   </div>
+    </main>
+    <%- include('partials/footer') -%>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.modal');
+            M.Modal.init(elems, modal1);
+        });
+    </script>
+</body>
+</html>
