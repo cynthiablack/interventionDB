@@ -1,61 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
   <%- include('partials/header') -%>
-<body class="green darken-4">
+<body>
   <main>
     <div class="container">
       <div class="form-container">
-        <div class="card">
-          <%- include('partials/logo') -%>
+        <div class="card green darken-4 white-text">
+          <div class="card-content">
+            <div class="row">
+              <div class="col s12 m4 left space-below large-space-above">
+                    <img src="/images/arrow_white.png" alt="logo of curved arrow pointing up and right" class="logo no-space-below"/>
+                    <h4 class="space-below">Intervention DB</h4>
+                    <div class="divider space-below"></div>
+                    <p>Join today to start tracking student intervention data the easy way.</p>
+                    <% if (locals.messages.errors) { %>
+                    <% messages.errors.forEach( el => { %>
+                    <div class="alert alert-danger"><%= el.msg %></div>
+                    <% }) %>    
+                    <% } %>
+                    <% if (locals.messages.info) { %>
+                    <% messages.info.forEach( el => { %>
+                    <div class="alert alert-info"><%= el.msg %></div>
+                    <% }) %>    
+                    <% } %>
+              </div>
+              <div class="col s12 m8 right white green-text text-darken-4">
+                <h5 class="space-below">Create an Account</h5>
+                <form action="/signup" method="POST">
+                  <div class="row space-above">
+                    <div class="col s8 offset-s1 input-field">
+                      <i class="material-icons prefix green-text text-darken-4">account_circle</i>
+                      <input type="text" class="green-text text-darken-4" id="userName" name="userName" placeholder="Username" aria-label="username" required>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col s8 offset-s1 input-field">
+                      <i class="material-icons prefix green-text text-darken-4">alternate_email</i>
+                      <input type="email" class="green-text text-darken-4" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="Email address" aria-label="email addres" required>
+                      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col s8 offset-s1 input-field">
+                      <i class="material-icons prefix green-text text-darken-4">lock</i>
+                      <input type="password" class="green-text text-darken-4" id="password" name="password" placeholder="Password" aria-label="password" required>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col s8 offset-s1 input-field">
+                      <i class="material-icons prefix green-text text-darken-4">check</i>
+                      <input type="password" class="input-field green-text text-darken-4 space-below" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" aria-label="confirm password" required>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn green darken-4 waves-effect waves-light space-below">Submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </main>
 </body>
 </html>
-
-<!-- <main class="container form-container">
-  <div class="container">
-    <div class="card">
-      
-      <div class="divider"></div>
-      <h4 class="lead centered">Create an Account</h4>
-      <div class="container">
-        <div class="row">
-          <section class="col-6">
-            <% if (locals.messages.errors) { %>
-              <% messages.errors.forEach( el => { %>
-                  <div class="alert alert-danger"><%= el.msg %></div>
-              <% }) %>    
-          <% } %>
-          <% if (locals.messages.info) { %>
-              <% messages.info.forEach( el => { %>
-                  <div class="alert alert-info"><%= el.msg %></div>
-              <% }) %>    
-          <% } %>
-          <form action="/signup" method="POST">
-              <div class="mb-3">
-                  <label for="userName" class="form-label">User Name</label>
-                  <input type="text" class="form-control" id="userName" name="userName">
-                </div>
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
-                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-              </div>
-              <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password">
-              </div>
-              <div class="mb-3">
-                  <label for="confirmPassword" class="form-label">Confirm Password</label>
-                  <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
-                </div>
-              <button type="submit" class="btn btn-teal space-below">Submit</button>
-            </form>
-          </section>
-          </div>
-        </div>
-    </div>
-  </div>
-</main> -->

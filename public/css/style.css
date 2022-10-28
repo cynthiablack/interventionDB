@@ -16,8 +16,9 @@
   text-align: center;
 }
 
-.clear {
-  clear: both;
+.centered-container {
+  display: flex;
+  justify-content: center;
 }
 
 #edit-intervention {
@@ -53,6 +54,14 @@ nav {
   padding: 0 1vw;
 }
 
+.no-space-below {
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  bottom: -2.25vh;
+}
+
 .overflow {
   display: flex;
   align-items: center;
@@ -62,6 +71,10 @@ nav {
 
 .overflow h3 {
   padding-left: 0.5vw;
+}
+
+.space-above {
+  margin-top: 2vh;
 }
 
 .space-below {
@@ -104,9 +117,55 @@ table a {
 /* Images */
 .logo {
   display: inline;
-  max-width: 2.5vw;
+  max-width: 32px;
 }
 
 footer .logo {
   width: 1vw;
+}
+
+/* Forms */
+.form-icon {
+  font-size: 2vw;
+}
+
+/* label color */
+.input-field label {
+  color: #1c5d20;
+}
+/* label focus color */
+.input-field input[type=text]:focus + label {
+  color: #1c5d20;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #1c5d20;
+  box-shadow: 0 1px 0 0 #000;
+}
+/* valid color */
+.input-field input[type=text].valid {
+  border-bottom: 1px solid #1c5d20;
+  box-shadow: 0 1px 0 0 #01c5d20;
+}
+/* invalid color */
+.input-field input[type=text].invalid {
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+  color: #000;
+}
+
+/* Media Queries */
+@media only screen and (min-width: 601px) {
+  .large-space-above {
+    margin-top: 12vh;
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1200px) {
+  .large-space-above h4 {
+    font-size: 2rem;
+  }
 }

@@ -2,51 +2,46 @@
 <html lang="en">
   <%- include('partials/header') -%>
 <body>
-
-  <main class="container form-container">
+  <main>
     <div class="container">
-      <img src="../images/computer.png" alt="logo of curved arrow pointing up and right" class="logo left"/>
-      <h3 class="left">HELLO</h3>
-    </div>
-    <div class="container">
-      <div class="card">
-        <%- include('partials/logo') -%>
-        <div class="divider"></div>
-        <h4 class="lead centered">Please Login</h4>
-          <div class="container">
-            <div class="row">
-              <section class="col-6">
-                <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
-                  <div class="alert alert-danger"><%= el.msg %></div>
-                  <% }) %> <% } %> <% if (locals.messages.info) { %> <%
-                  messages.info.forEach( el => { %>
-                  <div class="alert alert-info"><%= el.msg %></div>
-                  <% }) %> <% } %>
+      <div class="form-container">
+        <div class="card col s6 green darken-4 white-text">
+          <div class="card-content">
+              <div class="space-below">
+                    <img src="/images/arrow_white.png" alt="logo of curved arrow pointing up and right" class="logo no-space-below"/>
+                    <h4 class="space-below">Intervention DB</h4>
+                    <div class="divider space-below"></div>
+                    <p>K-12 intervention tracking made simple.</p>
+                    <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+                    <div class="alert alert-danger"><%= el.msg %></div>
+                    <% }) %> <% } %> <% if (locals.messages.info) { %> 
+                      <%messages.info.forEach( el => { %>
+                      <div class="alert alert-info"><%= el.msg %></div>
+                      <% }) %> <% } %>
+              </div>
+                <div class="white green-text text-darken-4">
+                  <br>
+ 
                   <form action="/login" method="POST">
-                    <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Email address</label>
-                      <input
-                        type="email"
-                        class="form-control"
-                        id="exampleInputEmail1"
-                        aria-describedby="emailHelp"
-                        name="email"
-                      />
+                    <div class="row">
+                      <div class="col s6 offset-s3 input-field">
+                        <i class="material-icons prefix green-text text-darken-4">alternate_email</i>
+                        <input type="email" class="green-text text-darken-4" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="Email address" aria-label="email addres" required>
+                      </div>
                     </div>
-                    <div class="mb-3">
-                      <label for="exampleInputPassword1" class="form-label">Password</label>
-                      <input
-                        type="password"
-                        class="form-control"
-                        id="exampleInputPassword1"
-                        name="password"
-                      />
+                    <div class="row">
+                      <div class="col s6 offset-s3 input-field">
+                        <i class="material-icons prefix green-text text-darken-4">lock</i>
+                        <input type="password" class="green-text text-darken-4" id="password" name="password" placeholder="Password" aria-label="password" required>
+                      </div>
                     </div>
-                    <button type="submit" class="btn btn-teal space-below">Login</button>
+                    <button type="submit" class="btn green darken-4 waves-effect waves-light space-below">Submit</button>
                   </form>
-              </section>
-            </div>
+
+                </div>
+              </div> 
           </div>
+        </div>
       </div>
     </div>
   </main>
