@@ -5,56 +5,105 @@
   <%- include('partials/navbar') -%>
   <main class="container">
     <h1><%= student.firstName %> <%= student.lastName %>'s Profile</h1>
-    <div class="row">
-      <div class="col s3 offset-s3">
-        <!-- Modal Trigger -->
-      <button data-target="modal1" class="btn light-green modal-trigger"><span><i class="material-icons">edit</i> edit student</span></button>
-      
-      <!-- Modal Structure -->
-      <div id="modal1" class="modal">
-        <div class="modal-content">
-          <form action="/students/editStudent/<%=student.id%>?_method=PUT" method="POST">
-            <div class="input-field">
-              <label for="firstName" class="form-label">First Name</label>
-              <input type="text" id="firstName" name="firstName" value="<%=student.firstName%>">
+    <%if(student.user == user.id){ %>
+      <div class="row">
+        <div class="col s3 offset-s3">
+          <!-- Modal Trigger -->
+        <button data-target="modal1" class="btn light-green modal-trigger"><span><i class="material-icons">edit</i> edit student</span></button>
+        
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+          <div class="modal-content">
+            <form action="/students/editStudent/<%=student.id%>?_method=PUT" method="POST">
+              <div class="input-field">
+                <label for="firstName" class="form-label">First Name</label>
+                <input type="text" id="firstName" name="firstName" value="<%=student.firstName%>">
+              </div>
+              <div class="input-field">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input type="text" id="lastName" name="lastName" value="<%=student.lastName%>">
+                </div>
+              
+                  <button type="submit" class="btn light-green space-below">Update Student</button>
+                </form>
+          </div>
+        </div>
+        </div>
+          <!--Delete Button-->
+          <form action="/students/deleteStudent/<%=student.id%>?_method=DELETE" method="POST">
+            <button class="btn red darken-3" type="submit"><i class="fa-sharp fa-solid fa-user-slash"></i>Delete Student</button>
+          </form>
+      </div>
+      <div class="row">
+        <div class="col s3 offset-s5">
+          <!-- Modal Trigger -->
+        <button data-target="modal2" class="btn green darken-4 modal-trigger"><span><i class="material-icons">note_add</i> add record</span></button>
+        
+        <!-- Modal Structure -->
+        <div id="modal2" class="modal">
+          <div class="modal-content green-text text-darken-2">
+            <span class="lead centered">Entering new record for <%= student.firstName %> <%= student.lastName %></span>
+            <form action="/record/createRecord/<%= student._id %>" method="POST">
+              <div class="input-field">
+                <select id="title" name="title" placeholder="title" required>
+                    <option value="" class="disabled"></option>
+                    <% for(let i=0; i<interventions.length; i++) { %>
+                    <option value="<%= interventions[i].title %>"><%= interventions[i].title %></option>
+                    <% } %>
+                </select>
+                <label>Intervention Title</label>
+              </div>
+              <div class="input-field">
+                <label for="activity" class="form-label">Activity</label>
+                <input type="text" id="activity" name="activity">
             </div>
             <div class="input-field">
-              <label for="lastName" class="form-label">Last Name</label>
-              <input type="text" id="lastName" name="lastName" value="<%=student.lastName%>">
-              </div>
-            
-                <button type="submit" class="btn green darken-4 space-below">Update Student</button>
+              <label for="duration" class="form-label">Duration</label>
+              <input type="text" id="duration" name="duration">
+          </div>
+          <div>
+            <textarea class="materialize-textarea" id="anecdotalNotes" name="anecdotalNotes"></textarea>
+            <label for="anecdotalNotes" class="form-label">Notes</label>
+          </div>
+                  <button type="submit" class="btn green darken-4 space-below">Add Record</button>
               </form>
+          </div>
         </div>
-      </div>
-      </div>
-        <!--Delete Button-->
-        <form action="/students/deleteStudent/<%=student.id%>?_method=DELETE" method="POST">
-          <button class="btn red darken-3" type="submit"><i class="fa-sharp fa-solid fa-user-slash"></i>Delete Student</button>
-        </form>
-      </div>
-        
-      </div>
 
-        </div>
+
+              
+              </div>
       </div>
-      
-      
-        
-        
-         </div>
-    </div>
-<%if(student.user == user.id){ %>
-<div class="row">
-  <div class="container button-container">
-    <div class="container">
-      <%- include('partials/addrecord') -%>
-    </div>
-    
-    
-  </div>
-</div>
 <%}%>
+
+<div class="container">
+  <% if (records.length > 0) { %>
+      <table class="striped">
+      <thead>
+          <tr>
+              <th>Intervention Title</th>
+              <th>Current Intervention</th>
+              <th>Last Intervention Date</th>
+              <th></th>
+              <th></th>
+          </tr>
+      </thead>
+          <tbody>
+            <% for(var i=0; i<records.length; i++) { %>
+                  <tr>
+                      <td><a href="/records/<%=records[i]._id%>"><%= records[i].title %></a></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      </tr>
+                  <% } %>
+          </tbody>
+  </table>
+ <%} else { %>
+  <p>Please add a student to enter intervention data. </p>
+  <% } %>
+</div>
 
   </main>
   <%- include('partials/footer') -%>
@@ -64,6 +113,11 @@
         var elems = document.querySelectorAll('.modal');
         M.Modal.init(elems, modal1);
     });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var sel=document.querySelectorAll('select');
+        M.FormSelect.init(sel)
+    })
 </script>
 </body>
 </html>

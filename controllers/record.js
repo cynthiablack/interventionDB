@@ -8,6 +8,9 @@ module.exports = {
     try {
       await InterventionRecord.create({
         record: req.body.record,
+        activity: req.body.activity,
+        duration: req.body.duration,
+        anecdotalNotes: req.body.anecdotalNotes,
         student: req.params.id,
         user: req.user.id,
       });

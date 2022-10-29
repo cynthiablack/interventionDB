@@ -5,9 +5,10 @@
     <%- include('partials/navbar') -%>
     <main class="container">
         <h1><%= user.userName %>'s Class</h1>
-        <div class="row s2 offset-s8">
+        <div class="row">
+            <div class="col s4 offset-s4">
         <!-- Modal Trigger -->
-          <button data-target="modal1" class="btn-small red darken-1 right modal-trigger"><span><i class="material-icons">person_add</i> Add</span></button>
+          <button data-target="modal1" class="btn-small green darken-4 modal-trigger"><span><i class="material-icons">person_add</i> Add student</span></button>
           <!-- Modal Structure -->
             <div id="modal1" class="modal">
             <div class="modal-content">
@@ -23,6 +24,7 @@
                             <button type="submit" class="btn green darken-4 space-below">Add Student</button>
                 </form>
             </div>
+        </div>
             </div>
         </div>
 
@@ -45,7 +47,7 @@
                                 <td><a href="/students/<%=students[i]._id%>"></a></td>
                                     <td><a href="/students/<%=students[i]._id%>"></a></td>
                                     <td><a href="/students/<%=students[i]._id%>"></a></td>
-                                    <td> <a href="/students/<%=students[i]._id%>" class="btn light-green btn-small">Profile</a></td>
+                                    <td> <a href="/students/<%=students[i]._id%>" class="btn deep-purple btn-small">Profile</a></td>
                                 </tr>
                             <% } %>
                     </tbody>
