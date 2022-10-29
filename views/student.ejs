@@ -40,15 +40,20 @@
         <button data-target="modal2" class="btn green darken-4 modal-trigger"><span><i class="material-icons">note_add</i> add record</span></button>
         
         <!-- Modal Structure -->
-        <div id="modal2" class="modal">
+        <div id="modal2" class="modal bottom-sheet">
           <div class="modal-content green-text text-darken-2">
             <span class="lead centered">Entering new record for <%= student.firstName %> <%= student.lastName %></span>
             <form action="/record/createRecord/<%= student._id %>" method="POST">
               <div class="input-field">
+                <input type="text" class="datepicker" id="date">
+                <label for="date">Choose Date</label>
+              </div>
+
+              <div class="input-field">
                 <select id="title" name="title" placeholder="title" required>
                     <option value="" class="disabled"></option>
                     <% for(let i=0; i<interventions.length; i++) { %>
-                    <option value="<%= interventions[i].title %>"><%= interventions[i].title %></option>
+                    <option value="<%= interventions[i].id %>"><%= interventions[i].title %></option>
                     <% } %>
                 </select>
                 <label>Intervention Title</label>
@@ -82,9 +87,9 @@
       <thead>
           <tr>
               <th>Intervention Title</th>
-              <th>Current Intervention</th>
-              <th>Last Intervention Date</th>
-              <th></th>
+              <th>Activity</th>
+              <th>Duration</th>
+              <th>Date</th>
               <th></th>
           </tr>
       </thead>
@@ -92,16 +97,16 @@
             <% for(var i=0; i<records.length; i++) { %>
                   <tr>
                       <td><a href="/records/<%=records[i]._id%>"><%= records[i].title %></a></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td><a href="/records/<%=records[i]._id%>"><%= records[i].activity %></a></td>
+                      <td><a href="/records/<%=records[i]._id%>"><%= records[i].duration %></a></td>
+                      <td><a href="/records/<%=records[i]._id%>"><%= records[i].date.toLocaleDateString() %></a></td>
+                      <td><a href="/records/<%=records[i]._id%>"><%= records[i].title %></a></td>
                       </tr>
                   <% } %>
           </tbody>
   </table>
  <%} else { %>
-  <p>Please add a student to enter intervention data. </p>
+  <p class="center-align">No intervention data found. </p>
   <% } %>
 </div>
 
@@ -117,7 +122,12 @@
     document.addEventListener('DOMContentLoaded', function() {
         var sel=document.querySelectorAll('select');
         M.FormSelect.init(sel)
-    })
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.datepicker');
+    M.Datepicker.init(elems, date);
+  });
 </script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const InterventionRecordSchema = new mongoose.Schema({
-  title: {
+  intervention: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Intervention",
   },
@@ -16,7 +16,7 @@ const InterventionRecordSchema = new mongoose.Schema({
     type: String,
   },
   duration: {
-    type: Number,
+    type: String,
   },
   assessmentGiven: {
     type: Boolean,

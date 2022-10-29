@@ -8,6 +8,7 @@ module.exports = {
     try {
       await InterventionRecord.create({
         record: req.body.record,
+        intervention: req.intervention.id,
         activity: req.body.activity,
         duration: req.body.duration,
         anecdotalNotes: req.body.anecdotalNotes,
@@ -15,7 +16,7 @@ module.exports = {
         user: req.user.id,
       });
       console.log("Intervention data has been added!");
-      res.redirect("/student/"+req.params.id);
+      res.redirect("/students/"+req.params.id);
     } catch (err) {
       console.log(err);
     }
