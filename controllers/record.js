@@ -7,8 +7,7 @@ module.exports = {
     const interventions = await Intervention.findById(req.params.id);
     try {
       await InterventionRecord.create({
-        record: req.body.record,
-        intervention: req.intervention.id,
+        title: req.body.title,
         activity: req.body.activity,
         duration: req.body.duration,
         anecdotalNotes: req.body.anecdotalNotes,
@@ -23,7 +22,7 @@ module.exports = {
   },
   getRecord: async (req, res) => {
     try {
-      const intervention = await Intervention.findById(req.params.id);
+      const intervention = await Intervention.findById(req.params.id).populate('title');
       const records = await InterventionRecord.find({record: req.params.id}).sort({ createdAt: "desc" }).lean();
       const student = await Student.findById(req.params.id);
       res.render("record.ejs", { student: student, user: req.user, records: records, intervention: intervention });

@@ -14,7 +14,7 @@ InterventionDB is built with MVC architecture to enable changes to components as
 
 Registered users can add, edit, and delete student intervention data. Intervention data is linked to user-entered interventions and user-created student IDs. Collected intervention data includes student ID, date of delivery, teacher notes, and any assessment data.
 
-User authentication is handled by Passport middleware (google-oauth-20). Templating via EJS and CSS via Materialize.
+User authentication is handled by Passport middleware. Templating via EJS and CSS via Materialize.
 
 ## Optimizations
 

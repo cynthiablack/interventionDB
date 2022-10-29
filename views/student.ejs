@@ -37,9 +37,9 @@
       <div class="row">
         <div class="col s3 offset-s5">
           <!-- Modal Trigger -->
-        <button data-target="modal2" class="btn green darken-4 modal-trigger"><span><i class="material-icons">note_add</i> add record</span></button>
+          <button data-target="modal2" class="btn green darken-4 modal-trigger"><span><i class="material-icons">note_add</i> add record</span></button>
         
-        <!-- Modal Structure -->
+          <!-- Modal Structure -->
         <div id="modal2" class="modal bottom-sheet">
           <div class="modal-content green-text text-darken-2">
             <span class="lead centered">Entering new record for <%= student.firstName %> <%= student.lastName %></span>
@@ -48,7 +48,6 @@
                 <input type="text" class="datepicker" id="date">
                 <label for="date">Choose Date</label>
               </div>
-
               <div class="input-field">
                 <select id="title" name="title" placeholder="title" required>
                     <option value="" class="disabled"></option>
@@ -74,10 +73,8 @@
               </form>
           </div>
         </div>
-
-
-              
-              </div>
+        
+        </div>
       </div>
 <%}%>
 
@@ -98,9 +95,9 @@
                   <tr>
                       <td><a href="/records/<%=records[i]._id%>"><%= records[i].title %></a></td>
                       <td><a href="/records/<%=records[i]._id%>"><%= records[i].activity %></a></td>
-                      <td><a href="/records/<%=records[i]._id%>"><%= records[i].duration %></a></td>
+                      <td><a href="/records/<%=records[i]._id%>"><%= records[i].duration %> minutes</a></td>
                       <td><a href="/records/<%=records[i]._id%>"><%= records[i].date.toLocaleDateString() %></a></td>
-                      <td><a href="/records/<%=records[i]._id%>"><%= records[i].title %></a></td>
+                      <td></td>
                       </tr>
                   <% } %>
           </tbody>
@@ -125,8 +122,12 @@
     });
 
     document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.datepicker');
-    M.Datepicker.init(elems, date);
+    var date = document.querySelectorAll('.datepicker');
+    M.Datepicker.init(date, {
+      autoClose: true,
+      disableWeekends: true,
+    }
+    );
   });
 </script>
 </body>

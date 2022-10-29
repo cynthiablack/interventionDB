@@ -16,7 +16,7 @@ const InterventionRecordSchema = new mongoose.Schema({
     type: String,
   },
   duration: {
-    type: String,
+    type: Number,
   },
   assessmentGiven: {
     type: Boolean,
