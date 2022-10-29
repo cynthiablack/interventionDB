@@ -134,41 +134,47 @@ footer .logo {
 }
 
 /* Forms */
-.form-icon {
-  font-size: 2vw;
-}
+    .form-icon {
+      font-size: 2vw;
+    }
 
-/* label color */
-.input-field label {
-  color: #1c5d20;
-}
-/* label focus color */
-.input-field input[type=text]:focus + label {
-  color: #1c5d20;
-}
-/* label underline focus color */
-.input-field input[type=text]:focus {
-  border-bottom: 1px solid #1c5d20;
-  box-shadow: 0 1px 0 0 #000;
-}
-/* icon prefix focus color */
-.input-field .prefix.active {
-  color: #000;
-}
+    /* label color */
+    .input-field label {
+      color: #1c5d20;
+    }
+    /* label focus color */
+    .input-field input[type=text]:focus + label {
+      color: #1c5d20;
+    }
+    /* label underline focus color */
+    .input-field input[type=text]:focus {
+      border-bottom: 1px solid #1c5d20;
+      box-shadow: 0 1px 0 0 #000;
+    }
+    /* icon prefix focus color */
+    .input-field .prefix.active {
+      color: #000;
+    }
 
-/* Date Picker */
-.datepicker-date-display {
-  background-color: #1c5d20;
-}
+    /* Date Picker */
+    .datepicker-date-display {
+      background-color: #1c5d20;
+    }
 
-.datepicker-done,
-.select-dropdown li span {
-  color: #1c5d20;
-}
+    .datepicker-done,
+    .select-dropdown li span {
+      color: #1c5d20;
+    }
 
-.datepicker-cancel {
-  color: #c62828;
-}
+    .datepicker-cancel {
+      color: #c62828;
+    }
+
+    /* Select */
+    .dropdown-content { 
+      top: 100% !important;
+      vertical-align: top;
+    }
 
 /* Media Queries */
 @media only screen and (min-width: 601px) {
