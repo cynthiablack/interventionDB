@@ -61,10 +61,16 @@
                 <label for="activity" class="form-label">Activity</label>
                 <input type="text" id="activity" name="activity">
             </div>
-            <div class="input-field">
-              <label for="duration" class="form-label">Duration</label>
-              <input type="text" id="duration" name="duration">
-          </div>
+            <div class="row">
+              <div class="input-field col s1">
+                <label for="duration" class="form-label">Duration</label>
+                <input type="text" id="duration" name="duration">
+            </div>
+            <div class="col s2">
+              <span class="bottom">minutes</span>
+            </div>
+            </div>
+            
           <div>
             <textarea class="materialize-textarea" id="anecdotalNotes" name="anecdotalNotes"></textarea>
             <label for="anecdotalNotes" class="form-label">Notes</label>
@@ -93,7 +99,7 @@
           <tbody>
             <% for(var i=0; i<records.length; i++) { %>
                   <tr>
-                      <td><a href="/records/<%=records[i]._id%>"><%= records[i].title %></a></td>
+                      <td><a href="/records/<%=records[i]._id%>"><%= records[i].intervention %></a></td>
                       <td><a href="/records/<%=records[i]._id%>"><%= records[i].activity %></a></td>
                       <td><a href="/records/<%=records[i]._id%>"><%= records[i].duration %> minutes</a></td>
                       <td><a href="/records/<%=records[i]._id%>"><%= records[i].date.toLocaleDateString() %></a></td>

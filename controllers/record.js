@@ -4,10 +4,9 @@ const Student = require("../models/Student");
 
 module.exports = {
   createRecord: async (req, res) => {
-    const interventions = await Intervention.findById(req.params.id);
     try {
       await InterventionRecord.create({
-        title: req.body.title,
+        intervention: req.body.title,
         activity: req.body.activity,
         duration: req.body.duration,
         anecdotalNotes: req.body.anecdotalNotes,
@@ -25,7 +24,7 @@ module.exports = {
       const intervention = await Intervention.findById(req.params.id).populate('title');
       const records = await InterventionRecord.find({record: req.params.id}).sort({ createdAt: "desc" }).lean();
       const student = await Student.findById(req.params.id);
-      res.render("record.ejs", { student: student, user: req.user, records: records, intervention: intervention });
+      res.render("record.ejs", { student: student, user: req.user, records: records, intervention: intervention, title: title });
     } catch (err) {
       console.log(err);
     }
