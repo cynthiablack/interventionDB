@@ -16,6 +16,13 @@ module.exports = {
       const interventions = await Intervention.find({ user: req.user.id });
       const student = await Student.findById(req.params.id);
       const records = await InterventionRecord.find({student: req.params.id}).sort({ createdAt: "desc" }).lean();
+      
+      for (let i = 0; i < records.length; i++){
+        const fullRecord = interventions.find(y => y._id.toString() === records[i].intervention.toString());
+        records[i].interventionTitle = fullRecord.title;
+        console.log(fullRecord.title)
+        };
+
       res.render("student.ejs", { student: student, user: req.user, records: records, interventions: interventions });
     } catch (err) {
       console.log(err);

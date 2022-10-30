@@ -21,10 +21,10 @@ module.exports = {
   },
   getRecord: async (req, res) => {
     try {
-      const intervention = await Intervention.findById(req.params.id).populate('title');
+      const intervention = await Intervention.findById(req.params.id);
       const records = await InterventionRecord.find({record: req.params.id}).sort({ createdAt: "desc" }).lean();
       const student = await Student.findById(req.params.id);
-      res.render("record.ejs", { student: student, user: req.user, records: records, intervention: intervention, title: title });
+      res.render("record.ejs", { student: student, user: req.user, records: records, title: intervention.title });
     } catch (err) {
       console.log(err);
     }
