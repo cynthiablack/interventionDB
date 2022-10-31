@@ -25,7 +25,7 @@ module.exports = {
       const intervention = await Intervention.findById(req.params.id);
       const records = await InterventionRecord.find({record: req.params.id}).sort({ createdAt: "desc" }).lean();
       const student = await Student.findById(req.params.id);
-      res.render("record.ejs", { student: student, user: req.user, records: records, title: intervention.title });
+      res.render("record.ejs", { student: student, user: req.user, records: records, intervention: intervention });
     } catch (err) {
       console.log(err);
     }
