@@ -4,44 +4,76 @@
  <body>
      <%- include('partials/navbar') -%>
      <main class="container">
+        <div class="fixed-action-btn click-to-toggle">
+            <a class="btn-floating btn-large btn tooltipped green darken-4" data-tooltip="Menu">
+              <i class="large material-icons">menu</i>
+            </a>
+            <ul>
+                <!-- Edit Student - Modal 1 Trigger -->
+                <li>
+                <button data-target="modal1" class="btn-floating tooltipped light-green modal-trigger" data-tooltip="Edit Intervention">
+                    <span><i class="material-icons">edit</i> edit intervention</span>
+                </button>
+                </li>
+            </ul>
+        </div>
          <table>
              <thead>
                  <th>Title</th>
                  <th>Source</th>
                  <th>Target Area</th>
-                 <th></th>
              </thead>
              <tbody>
                  <td><%= intervention.title %></td>
                  <td><%=intervention.source%></td>
                  <td><%=intervention.targetArea%></td>
-                 <td>
-                       <div class="container form-container" id="edit-intervention">
-                         <div class="card-content">
-                             <details>
-                                 <summary class="btn light-green btn-small"><i class="material-icons">edit</i></summary>
-                                     <form action="/interventions/editIntervention/<%=intervention.id%>?_method=PUT" method="POST">
-                                         <div class="input-field">
-                                         <label for="title" class="form-label">Title</label>
-                                         <input type="text" id="title" name="title" value="<%=intervention.title%>">
-                                         </div>
-                                     <div class="input-field">
-                                         <label for="source" class="form-label">Source</label>
-                                         <input type="text" id="source" name="source" value="<%=intervention.source%>">
-                                         </div>
-                                         <div class="input-field">
-                                         <label for="targetArea" class="form-label">targetArea</label>
-                                         <input type="text" id="targetArea" name="targetArea" value="<%=intervention.targetArea%>">
-                                         </div>
-                                         <button type="submit" class="btn light-green btn-small">Update Intervention</button>
-                                     </form>
-                             </details>
-                         </div>
-                       </div>
-                                 </td>
              </tbody>
          </table>
+
+          <!-- Edit Student Modal 1 -->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <form action="/interventions/editIntervention/<%=intervention.id%>?_method=PUT" method="POST">
+                    <div class="input-field">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" id="title" name="title" value="<%=intervention.title%>">
+                    </div>
+                <div class="input-field">
+                    <label for="source" class="form-label">Source</label>
+                    <input type="text" id="source" name="source" value="<%=intervention.source%>">
+                    </div>
+                    <div class="input-field">
+                    <label for="targetArea" class="form-label">targetArea</label>
+                    <input type="text" id="targetArea" name="targetArea" value="<%=intervention.targetArea%>">
+                    </div>
+                    <button type="submit" class="btn light-green btn-small">Update Intervention</button>
+                </form>
+            </div>
+          </div>
+
      </main>
      <%- include('partials/footer') -%>
+     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    M.FloatingActionButton.init(elems, {
+        direction: 'left',
+        hoverEnabled: false
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.tooltipped');
+    M.Tooltip.init(elems, {
+        position: 'top'
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.modal');
+        M.Modal.init(elems, modal1);
+    });
+
+     </script>
  </body>
  </html>
