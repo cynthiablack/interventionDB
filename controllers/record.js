@@ -53,7 +53,7 @@ module.exports = {
       // Delete record from db
       await InterventionRecord.remove({ _id: req.params.id });
       console.log("Deleted intervention record");
-      res.redirect(`/student/${req.params.id}`);
+      res.redirect(`/students/${req.params.id}`);
     } catch (err) {
       res.redirect("/dashboard");
     }
