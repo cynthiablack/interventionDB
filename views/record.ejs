@@ -29,3 +29,56 @@
    </table>
 
 <%- include('partials/footer') -%>
+
+<!-- Edit Record -->
+<div class="row">
+    <div class="col s3 offset-s5">
+      <!-- Modal Trigger -->
+      <button data-target="modal3" class="btn light-green modal-trigger"><i class="material-icons">edit</i></button>
+      <!-- Modal Structure -->
+    <div id="modal3" class="modal bottom-sheet">
+      <div class="modal-content green-text text-darken-2">
+        <span class="lead centered">Editing record for <%= student.firstName %> <%= student.lastName %></span>
+        <form action="/record/editRecord/<%=records[i]._id %>" method="POST">
+          <div class="input-field">
+            <input type="text" name="date" class="datepicker" id="date" value="<%= records[i]._id.date %>">
+            <label for="date">Choose Date</label>
+          </div>
+          <div class="input-field">
+            <select id="title" name="title" placeholder="title" required value="<%= records[i]._id.interventionTitle %>">
+                <option value="" class="disabled"></option>
+                <% for(let i=0; i<interventions.length; i++) { %>
+                <option value="<%= interventions[i].id %>"><%= interventions[i].title %></option>
+                <% } %>
+            </select>
+            <label>Intervention Title</label>
+          </div>
+          <div class="input-field">
+            <label for="activity" class="form-label">Activity</label>
+            <input type="text" id="activity" name="activity" value="<%= records[i]._id.activity %>">
+        </div>
+        <div class="row">
+          <div class="input-field col s1">
+            <label for="duration" class="form-label">Duration</label>
+            <input type="text" id="duration" name="duration" value="<%= records[i]._id.duration %>">
+        </div>
+        <div class="col s2">
+          <span class="bottom">minutes</span>
+        </div>
+        </div>
+        
+      <div>
+        <textarea class="materialize-textarea" id="anecdotalNotes" name="anecdotalNotes"></textarea>
+        <label for="anecdotalNotes" class="form-label">Notes</label>
+      </div>
+              <button type="submit" class="btn light-green space-below">Update Record</button>
+          </form>
+      </div>
+    </div>
+    
+    </div>
+  </div>
+  <!-- Delete Record -->
+    <form action="/record/deleteRecord/<%=records[i].id%>?_method=DELETE" method="POST">
+    <button class="btn red darken-3" type="submit"><i class="material-icons">delete</i></button>
+  </form>

@@ -5,13 +5,68 @@
   <%- include('partials/navbar') -%>
   <main class="container">
     <h1><%= student.firstName %> <%= student.lastName %>'s Profile</h1>
+    <div class="fixed-action-btn toolbar">
+      <a class="btn-floating btn-large green darken-4">
+        <i class="large material-icons">menu</i>
+      </a>
+      <ul>
+        <!-- Edit Student - Modal 1 Trigger -->
+        <li>
+          <button data-target="modal1" class="btn light-green modal-trigger">
+            <span><i class="material-icons">edit</i> edit student</span>
+          </button>
+        </li>
+        <!--Delete Student Button-->
+        <li>
+          <form action="/students/deleteStudent/<%=student.id%>?_method=DELETE" method="POST">
+          <button class="btn red darken-3" type="submit">
+            <i class="fa-sharp fa-solid fa-user-slash"></i>Delete Student
+          </button>
+          </form>
+        </li>
+         <!-- Add Record Modal 2 Trigger -->
+        <li>
+          <button data-target="modal2" class="btn blue modal-trigger">
+            <span><i class="material-icons">note_add</i> add record</span>
+          </button>
+        </li>
+      </ul>
+    </div>
     <%if(student.user == user.id){ %>
-      <div class="row">
-        <div class="col s3 offset-s3">
-          <!-- Modal Trigger -->
-        <button data-target="modal1" class="btn light-green modal-trigger"><span><i class="material-icons">edit</i> edit student</span></button>
-        
-        <!-- Modal Structure -->
+
+      <!-- Table Showing Intervention Records -->
+      <div class="container">
+        <% if (records.length > 0) { %>
+            <table class="striped">
+            <thead>
+                <tr>
+                    <th>Intervention Title</th>
+                    <th>Activity</th>
+                    <th>Duration</th>
+                    <th>Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+                <tbody>
+                  <% for(var i=0; i<records.length; i++) { %>
+                        <tr>
+                            <td><a href="/records/<%=records[i]._id%>"><%= records[i].interventionTitle %></a></td>
+                            <td><a href="/records/<%=records[i]._id%>"><%= records[i].activity %></a></td>
+                            <td><a href="/records/<%=records[i]._id%>"><%= records[i].duration %> minutes</a></td>
+                            <td><a href="/records/<%=records[i]._id%>"><%= records[i].date.toLocaleDateString() %></a></td>
+                            <td><a href="/records/<%=records[i]._id%>" class="btn indigo btn-small">show record</a></td>
+                            </tr>
+                        <% } %>
+                </tbody>
+        </table>
+       <%} else { %>
+        <p class="center-align">No intervention data found. </p>
+        <% } %>
+      </div>
+      <br>
+
+<!-- Modal Body Code-->
+        <!-- Edit Student Modal 1 -->
         <div id="modal1" class="modal">
           <div class="modal-content">
             <form action="/students/editStudent/<%=student.id%>?_method=PUT" method="POST">
@@ -22,30 +77,19 @@
               <div class="input-field">
                 <label for="lastName" class="form-label">Last Name</label>
                 <input type="text" id="lastName" name="lastName" value="<%=student.lastName%>">
-                </div>
-              
-                  <button type="submit" class="btn light-green space-below">Update Student</button>
-                </form>
+              </div>
+              <button type="submit" class="btn light-green space-below">Update Student</button>
+            </form>
           </div>
         </div>
-        </div>
-          <!--Delete Button-->
-          <form action="/students/deleteStudent/<%=student.id%>?_method=DELETE" method="POST">
-            <button class="btn red darken-3" type="submit"><i class="fa-sharp fa-solid fa-user-slash"></i>Delete Student</button>
-          </form>
-      </div>
-      <div class="row">
-        <div class="col s3 offset-s5">
-          <!-- Modal Trigger -->
-          <button data-target="modal2" class="btn green darken-4 modal-trigger"><span><i class="material-icons">note_add</i> add record</span></button>
         
-          <!-- Modal Structure -->
+          <!-- Add Record Modal 2 -->
         <div id="modal2" class="modal bottom-sheet">
           <div class="modal-content green-text text-darken-2">
             <span class="lead centered">Entering new record for <%= student.firstName %> <%= student.lastName %></span>
             <form action="/record/createRecord/<%= student._id %>" method="POST">
               <div class="input-field">
-                <input type="text" class="datepicker" id="date">
+                <input type="text" name="date" class="datepicker" id="date">
                 <label for="date">Choose Date</label>
               </div>
               <div class="input-field">
@@ -60,12 +104,12 @@
               <div class="input-field">
                 <label for="activity" class="form-label">Activity</label>
                 <input type="text" id="activity" name="activity">
-            </div>
+              </div>
             <div class="row">
               <div class="input-field col s1">
                 <label for="duration" class="form-label">Duration</label>
                 <input type="text" id="duration" name="duration">
-            </div>
+              </div>
             <div class="col s2">
               <span class="bottom">minutes</span>
             </div>
@@ -76,47 +120,23 @@
             <label for="anecdotalNotes" class="form-label">Notes</label>
           </div>
                   <button type="submit" class="btn green darken-4 space-below">Add Record</button>
-              </form>
+            </form>
           </div>
         </div>
-        
-        </div>
-      </div>
-<%}%>
 
-<div class="container">
-  <% if (records.length > 0) { %>
-      <table class="striped">
-      <thead>
-          <tr>
-              <th>Intervention Title</th>
-              <th>Activity</th>
-              <th>Duration</th>
-              <th>Date</th>
-              <th></th>
-          </tr>
-      </thead>
-          <tbody>
-            <% for(var i=0; i<records.length; i++) { %>
-                  <tr>
-                      <td><a href="/records/<%=records[i]._id%>"><%= records[i].interventionTitle %></a></td>
-                      <td><a href="/records/<%=records[i]._id%>"><%= records[i].activity %></a></td>
-                      <td><a href="/records/<%=records[i]._id%>"><%= records[i].duration %> minutes</a></td>
-                      <td><a href="/records/<%=records[i]._id%>"><%= records[i].date.toLocaleDateString() %></a></td>
-                      <td></td>
-                      </tr>
-                  <% } %>
-          </tbody>
-  </table>
- <%} else { %>
-  <p class="center-align">No intervention data found. </p>
-  <% } %>
-</div>
+<%}%>
 
   </main>
   <%- include('partials/footer') -%>
 
   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    M.FloatingActionButton.init(elems, {
+      toolbarEnabled: true
+    });
+  });
+
     document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.modal');
         M.Modal.init(elems, modal1);

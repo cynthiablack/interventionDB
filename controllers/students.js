@@ -6,7 +6,9 @@ module.exports = {
   getDashboard: async (req, res) => {
     try {
       const students = await Student.find({ user: req.user.id });
-      res.render("dashboard.ejs", { students: students, user: req.user });
+      const records = await InterventionRecord.find({student: req.params.id}).sort({ createdAt: "desc" }).lean();
+      
+      res.render("dashboard.ejs", { students: students, user: req.user, records: records });
     } catch (err) {
       console.log(err);
     }
@@ -20,7 +22,6 @@ module.exports = {
       for (let i = 0; i < records.length; i++){
         const fullRecord = interventions.find(y => y._id.toString() === records[i].intervention.toString());
         records[i].interventionTitle = fullRecord.title;
-        console.log(fullRecord.title)
         };
 
       res.render("student.ejs", { student: student, user: req.user, records: records, interventions: interventions });

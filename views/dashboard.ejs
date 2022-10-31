@@ -5,10 +5,20 @@
     <%- include('partials/navbar') -%>
     <main class="container">
         <h1><%= user.userName %>'s Class</h1>
-        <div class="row">
-            <div class="col s4 offset-s4">
-        <!-- Modal Trigger -->
-          <button data-target="modal1" class="btn-small green darken-4 modal-trigger"><span><i class="material-icons">person_add</i> Add student</span></button>
+        <div class="fixed-action-btn toolbar">
+            <a class="btn-floating btn-large green darken-4">
+              <i class="large material-icons">menu</i>
+            </a>
+            <ul>
+              <!-- Add Student - Modal 1 Trigger -->
+              <li>
+                <button data-target="modal1" class="btn blue modal-trigger">
+                  <span><i class="material-icons">person_add</i> Add student</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+
           <!-- Modal Structure -->
             <div id="modal1" class="modal">
             <div class="modal-content">
@@ -47,7 +57,7 @@
                                 <td><a href="/students/<%=students[i]._id%>"></a></td>
                                     <td><a href="/students/<%=students[i]._id%>"></a></td>
                                     <td><a href="/students/<%=students[i]._id%>"></a></td>
-                                    <td> <a href="/students/<%=students[i]._id%>" class="btn light-green btn-small">Profile</a></td>
+                                    <td> <a href="/students/<%=students[i]._id%>" class="btn indigo btn-small">Profile</a></td>
                                 </tr>
                             <% } %>
                     </tbody>
@@ -61,6 +71,13 @@
     <%- include('partials/footer') -%>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    M.FloatingActionButton.init(elems, {
+      toolbarEnabled: true
+    });
+  });
+
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.modal');
             M.Modal.init(elems, modal1);

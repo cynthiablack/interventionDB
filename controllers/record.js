@@ -6,6 +6,7 @@ module.exports = {
   createRecord: async (req, res) => {
     try {
       await InterventionRecord.create({
+        date: req.body.date,
         intervention: req.body.title,
         activity: req.body.activity,
         duration: req.body.duration,
@@ -50,7 +51,7 @@ module.exports = {
       // Find record by id
       let record = await InterventionRecord.findById({ _id: req.params.id });
       // Delete record from db
-      await InterventionRecord.deleteOne({ _id: req.params.id });
+      await InterventionRecord.remove({ _id: req.params.id });
       console.log("Deleted intervention record");
       res.redirect(`/student/${req.params.id}`);
     } catch (err) {
