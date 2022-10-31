@@ -5,14 +5,14 @@
     <%- include('partials/navbar') -%>
     <main class="container">
         <h1><%= user.userName %>'s Class</h1>
-        <div class="fixed-action-btn toolbar">
-            <a class="btn-floating btn-large green darken-4">
+        <div class="fixed-action-btn click-to-toggle">
+            <a class="btn-floating btn-large btn tooltipped green darken-4" data-tooltip="Menu">
               <i class="large material-icons">menu</i>
             </a>
             <ul>
               <!-- Add Student - Modal 1 Trigger -->
               <li>
-                <button data-target="modal1" class="btn blue modal-trigger">
+                <button data-target="modal1" class="btn-floating blue modal-trigger tooltipped" data-tooltip="Add Student">
                   <span><i class="material-icons">person_add</i> Add student</span>
                 </button>
               </li>
@@ -74,7 +74,15 @@
         document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.fixed-action-btn');
     M.FloatingActionButton.init(elems, {
-      toolbarEnabled: true
+        direction: 'left',
+        hoverEnabled: false
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.tooltipped');
+    M.Tooltip.init(elems, {
+        position: 'top'
     });
   });
 

@@ -4,6 +4,33 @@
 <body>
     <%- include('partials/navbar') -%>
     <main class="container">
+        <div class="fixed-action-btn click-to-toggle">
+      <a class="btn-floating btn-large btn tooltipped green darken-4" data-tooltip="Menu">
+        <i class="large material-icons">menu</i>
+      </a>
+      <ul>
+        <!-- Edit Student - Modal 1 Trigger -->
+        <li>
+          <button data-target="modal1" class="btn-floating tooltipped light-green modal-trigger" data-tooltip="Edit Student">
+            <span><i class="fa-solid fa-user-pen"></i> edit student</span>
+          </button>
+        </li>
+        <!--Delete Student Button-->
+        <li>
+          <form action="/students/deleteStudent/<%=student.id%>?_method=DELETE" method="POST">
+          <button class="btn-floating tooltipped red darken-3" type="submit" data-tooltip="Delete Student">
+            <i class="fa-sharp fa-solid fa-user-slash"></i>Delete Student
+          </button>
+          </form>
+        </li>
+         <!-- Add Record Modal 2 Trigger -->
+        <li>
+          <button data-target="modal2" class="btn-floating tooltipped blue modal-trigger" data-tooltip="Add Record">
+            <span><i class="material-icons">note_add</i> add record</span>
+          </button>
+        </li>
+      </ul>
+    </div>
         <table>
             <thead>
                 <th>Title</th>
