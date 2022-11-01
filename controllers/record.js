@@ -22,10 +22,12 @@ module.exports = {
   },
   getRecord: async (req, res) => {
     try {
-      const intervention = await Intervention.findById(req.params.id);
-      const records = await InterventionRecord.find({record: req.params.id}).sort({ createdAt: "desc" }).lean();
+      const interventions = await Intervention.find({ user: req.user.id });
+      const records = await InterventionRecord.findById(req.params.id);
       const student = await Student.findById(req.params.id);
-      res.render("record.ejs", { student: student, user: req.user, records: records, intervention: intervention });
+      const fullRecord = interventions.find(y => y._id.toString() === records.intervention.toString());
+
+      res.render("record.ejs", { records: records, student: req.student, interventions: req.interventions, title: fullRecord.title });
     } catch (err) {
       console.log(err);
     }
@@ -53,7 +55,7 @@ module.exports = {
       // Delete record from db
       await InterventionRecord.remove({ _id: req.params.id });
       console.log("Deleted intervention record");
-      res.redirect(`/students/${req.params.id}`);
+      res.redirect(`/students/${req.student.id}`);
     } catch (err) {
       res.redirect("/dashboard");
     }

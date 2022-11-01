@@ -17,13 +17,44 @@
             <span><i class="fa-solid fa-file-pen"></i> edit record</span>
           </button>
         </li>
+        <!--Delete Record Button-->
         <li>
-          delete record here
+          <form action="/records/deleteRecord/<%= records.id %>?_method=DELETE" method="POST">
+          <button class="btn-floating tooltipped red darken-3" type="submit" data-tooltip="Delete Record">
+            <i class="fa-sharp fa-solid fa-file-slash"></i>Delete Record
+          </button>
+          </form>
         </li>
       </ul>
     </div>
 
-    
+  <br>
+  <table>
+    <thead>
+        <th>Student</th>
+        <th>Title</th>
+        <th>Activity</th>
+        <th>Duration</th>
+        <th>Date</th>
+    </thead>
+    <tbody>
+        <td><%= records.student %></td>
+        <td><%= records.intervention %></td>
+        <td><%= records.activity %></td>
+        <td><%= records.duration %> minutes</td>
+        <td><%= records.date.toLocaleDateString() %></td>
+    </tbody>
+</table>
+<br>
+
+    <!-- Edit Record Modal 1 -->
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <span class="lead centered">Updating record for </span>
+            
+      </div>
+    </div>
+
   </main>
   <%- include('partials/footer') -%>
   <script>
@@ -41,6 +72,25 @@
         position: 'top'
     });
   });
-  </script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.modal');
+        M.Modal.init(elems, modal1);
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var sel=document.querySelectorAll('select');
+        M.FormSelect.init(sel)
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+    var date = document.querySelectorAll('.datepicker');
+    M.Datepicker.init(date, {
+      autoClose: true,
+      disableWeekends: true,
+    }
+    );
+  });
+</script>
 </body>
 </html>
