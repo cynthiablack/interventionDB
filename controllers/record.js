@@ -24,17 +24,19 @@ module.exports = {
     try {
       const interventions = await Intervention.find({ user: req.user.id });
       const records = await InterventionRecord.findById(req.params.id);
-      const student = await Student.findById(req.params.id);
+      const student = await Student.find({ student: req.student });
+
+      const studentInfo = student.find(y => y._id.toString() === records.student.toString());
       const fullRecord = interventions.find(y => y._id.toString() === records.intervention.toString());
 
-      res.render("record.ejs", { records: records, student: req.student, interventions: req.interventions, title: fullRecord.title });
+      res.render("record.ejs", { records: records, student: req.student, interventions: interventions, title: fullRecord.title, firstName: studentInfo.firstName, lastName: studentInfo.lastName });
     } catch (err) {
       console.log(err);
     }
   },
   editRecord: async (req, res) => {
     try {
-      await Record.findOneAndUpdate(
+      await InterventionRecord.findOneAndUpdate(
         { _id: req.params.id },
       
         

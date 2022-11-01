@@ -36,13 +36,15 @@
         <th>Activity</th>
         <th>Duration</th>
         <th>Date</th>
+        <th>Notes</th>
     </thead>
     <tbody>
-        <td><%= records.student %></td>
-        <td><%= records.intervention %></td>
+        <td><%= firstName %> <%= lastName %></td>
+        <td><%= title %></td>
         <td><%= records.activity %></td>
         <td><%= records.duration %> minutes</td>
         <td><%= records.date.toLocaleDateString() %></td>
+        <td><%= records.anecdotalNotes %></td>
     </tbody>
 </table>
 <br>
@@ -50,8 +52,43 @@
     <!-- Edit Record Modal 1 -->
     <div id="modal1" class="modal">
       <div class="modal-content">
-        <span class="lead centered">Updating record for </span>
-            
+        <span class="lead centered">Updating record for <%= firstName %> <%= lastName %> </span>
+
+        <form action="/records/editRecord/<%=records.id%>?_method=PUT" method="POST">
+          <div class="input-field">
+            <input type="text" name="date" class="datepicker" id="date" value="<%= records.date.toLocaleDateString() %>">
+            <label for="date">Choose Date</label>
+          </div>
+          <div class="input-field">
+            <select id="title" name="title" placeholder="title" value="<%= records.intervention %>" required>
+                <option value="" class="disabled"></option>
+                <% for(let i=0; i<interventions.length; i++) { %>
+                <option value="<%= interventions[i].id %>"><%= interventions[i].title %></option>
+                <% } %>
+            </select>
+            <label>Intervention Title</label>
+          </div>
+          <div class="input-field">
+            <label for="activity" class="form-label">Activity</label>
+            <input type="text" id="activity" name="activity" value="<%= records.activity %>">
+          </div>
+        <div class="row">
+          <div class="input-field col s1">
+            <label for="duration" class="form-label">Duration</label>
+            <input type="text" id="duration" name="duration" value="<%= records.duration %>">
+          </div>
+        <div class="col s2">
+          <span class="bottom">minutes</span>
+        </div>
+        </div>
+        
+      <div>
+        <textarea class="materialize-textarea" id="anecdotalNotes" name="anecdotalNotes" value="<%= records.anecdotalNotes %>"></textarea>
+        <label for="anecdotalNotes" class="form-label">Notes</label>
+      </div>
+              <button type="submit" class="btn green darken-4 space-below">Update Record</button>
+
+        </form>  
       </div>
     </div>
 
