@@ -87,7 +87,7 @@
         <div id="modal2" class="modal bottom-sheet">
           <div class="modal-content green-text text-darken-2">
             <span class="lead centered">Entering new record for <%= student.firstName %> <%= student.lastName %></span>
-            <form action="/record/createRecord/<%= student._id %>" method="POST">
+            <form action="/records/createRecord/<%= student._id %>" method="POST">
               <div class="input-field">
                 <input type="text" name="date" class="datepicker" id="date">
                 <label for="date">Choose Date</label>

@@ -7,7 +7,8 @@ module.exports = {
     try {
       await InterventionRecord.create({
         date: req.body.date,
-        intervention: req.body.title,
+        //record: req.body.record,
+        intervention: req.params.id,
         activity: req.body.activity,
         duration: req.body.duration,
         anecdotalNotes: req.body.anecdotalNotes,
