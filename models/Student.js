@@ -31,7 +31,8 @@ const StudentSchema = new mongoose.Schema({
 StudentSchema.virtual('records', {
   ref: 'InterventionRecord',
   'foreignField': 'student',
-  localField: '_id'
+  localField: '_id',
+  options: { sort: { 'date': -1}, limit: 1},
 })
 
 module.exports = mongoose.model('Student', StudentSchema)
