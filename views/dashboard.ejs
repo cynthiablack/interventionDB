@@ -16,12 +16,6 @@
                   <span><i class="material-icons">person_add</i> Add student</span>
                 </button>
               </li>
-              <!-- Add Feedback - Modal 1 Trigger -->
-              <li>
-                <button data-target="modal2" class="btn-floating purple modal-trigger tooltipped" data-tooltip="Provide Feedback">
-                  <span><i class="material-icons">add_comment</i> Provide feedback</span>
-                </button>
-              </li>
             </ul>
           </div>
 
@@ -42,18 +36,7 @@
             </div>
         </div>
 
-        <!-- Modal 2 Body -->
-        <div id="modal2" class="modal">
-            <div class="modal-content">
-                <form action="/students/createFeedback" method="POST">
-                            <div class="input-field col s12">
-                                <label for="comment" class="form-label">Your feedback</label>
-                                <textarea class="materialize-textarea" id="comment" name="comment"></textarea>
-                            </div>
-                            <button type="submit" class="btn green darken-4 space-below">Submit Feedback</button>
-                </form>
-            </div>
-        </div>
+
             </div>
         </div>
 
