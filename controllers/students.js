@@ -1,6 +1,7 @@
 const Student = require("../models/Student");
 const Intervention = require("../models/Intervention");
 const InterventionRecord = require("../models/InterventionRecord");
+const Feedback = require("../models/Feedback");
 
 module.exports = {
   getDashboard: async (req, res) => {
@@ -63,6 +64,18 @@ module.exports = {
       res.redirect("/dashboard");
     } catch (err) {
       res.redirect("/dashboard");
+    }
+  },
+  createFeedback: async (req, res) => {
+    try {
+      await Feedback.create({
+        comment: req.body.comment,
+        user: req.user.id,
+      });
+      console.log("Comment has been added!");
+      res.redirect("/dashboard");
+    } catch (err) {
+      console.log(err);
     }
   },
 };

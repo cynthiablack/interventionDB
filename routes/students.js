@@ -8,6 +8,8 @@ router.get("/:id", ensureAuth, studentsController.getStudent);
 
 router.post("/createStudent", studentsController.createStudent);
 
+router.post("/createFeedback", studentsController.createFeedback);
+
 router.put("/editStudent/:id", studentsController.editStudent);
 
 router.delete("/deleteStudent/:id", studentsController.deleteStudent);
