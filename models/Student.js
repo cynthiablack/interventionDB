@@ -20,6 +20,18 @@ const StudentSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
+},
+{
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true }
+}
+)
+
+// Virtual populate
+StudentSchema.virtual('records', {
+  ref: 'InterventionRecord',
+  'foreignField': 'student',
+  localField: '_id'
 })
 
 module.exports = mongoose.model('Student', StudentSchema)

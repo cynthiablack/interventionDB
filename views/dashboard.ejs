@@ -47,16 +47,14 @@
                         <th>Current Intervention</th>
                         <th>Last Intervention Date</th>
                         <th></th>
-                        <th></th>
                     </tr>
                 </thead>
                     <tbody>
                         <% for(var i=0; i<students.length; i++) { %>
                             <tr>
                                 <td><a href="/students/<%=students[i]._id%>"><%= students[i].firstName %> <%= students[i].lastName %></a></td>
-                                <td><a href="/students/<%=students[i]._id%>"></a></td>
-                                    <td><a href="/students/<%=students[i]._id%>"></a></td>
-                                    <td><a href="/students/<%=students[i]._id%>"></a></td>
+                                <td><a href="/students/<%=students[i]._id%>"></a><%= students[i].records[0].intervention.title %></td>
+                                    <td><a href="/students/<%=students[i]._id%>"></a><%= students[i].records[0].date.toLocaleDateString() %></td>
                                     <td> <a href="/students/<%=students[i]._id%>" class="btn indigo btn-small">Profile</a></td>
                                 </tr>
                             <% } %>
