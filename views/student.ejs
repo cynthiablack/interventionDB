@@ -128,41 +128,5 @@
 
   </main>
   <%- include('partials/footer') -%>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.fixed-action-btn');
-    M.FloatingActionButton.init(elems, {
-        direction: 'left',
-        hoverEnabled: false
-    });
-  });
-
-  document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.tooltipped');
-    M.Tooltip.init(elems, {
-        position: 'top'
-    });
-  });
-
-    document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.modal');
-        M.Modal.init(elems, modal1);
-    });
-
-    document.addEventListener('DOMContentLoaded', function() {
-        var sel=document.querySelectorAll('select');
-        M.FormSelect.init(sel)
-    });
-
-    document.addEventListener('DOMContentLoaded', function() {
-    var date = document.querySelectorAll('.datepicker');
-    M.Datepicker.init(date, {
-      autoClose: true,
-      disableWeekends: true,
-    }
-    );
-  });
-</script>
 </body>
 </html>
