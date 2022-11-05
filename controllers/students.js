@@ -6,7 +6,8 @@ module.exports = {
   getDashboard: async (req, res) => {
     try {
       const students = await Student.find({ user: req.user.id });
-      
+      const records = await InterventionRecord.find({ user: req.user.id }).populate('intervention')
+
       res.render("dashboard.ejs", { students: students, user: req.user });
     } catch (err) {
       console.log(err);
@@ -18,11 +19,11 @@ module.exports = {
       const student = await Student.findById(req.params.id);
       const records = await InterventionRecord.find({student: req.params.id}).sort({ createdAt: "desc" }).lean();
 
-        for (let i = 0; i < records.length; i++){
-          const fullRecord = interventions.find(y => y._id.toString() === records[i].intervention.toString());
-          console.log(fullRecord)
+        // for (let i = 0; i < records.length; i++){
+        //   const fullRecord = interventions.find(y => y._id.toString() === records[i].intervention.toString());
+        //   console.log(fullRecord)
           //records[i].intervention = fullRecord.title;
-        };
+        //};
       
       res.render("student.ejs", { student: student, user: req.user, records: records, interventions: interventions });
     } catch (err) {

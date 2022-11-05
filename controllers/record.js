@@ -7,8 +7,7 @@ module.exports = {
     try {
       await InterventionRecord.create({
         date: req.body.date,
-        //record: req.body.record,
-        intervention: req.params.id,
+        intervention: req.body.title,
         activity: req.body.activity,
         duration: req.body.duration,
         anecdotalNotes: req.body.anecdotalNotes,
@@ -24,15 +23,9 @@ module.exports = {
   getRecord: async (req, res) => {
     try {
       const interventions = await Intervention.find({ user: req.user.id });
-      const records = await InterventionRecord.findById(req.params.id).populate('student');
-      const student = await Student.find({ student: req.student });
-      
-      console.log(records.student.firstName)
-      
-      //const studentInfo = student.find(y => y._id.toString() === records.student.toString());
-      const fullRecord = interventions.find(y => y._id.toString() === records.intervention.toString());
+      const records = await InterventionRecord.findById(req.params.id);
 
-      res.render("record.ejs", { records: records, student: req.student, interventions: interventions, title: fullRecord.title });
+      res.render("record.ejs", { records: records, interventions: interventions });
     } catch (err) {
       console.log(err);
     }

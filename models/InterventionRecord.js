@@ -1,6 +1,10 @@
 const mongoose = require('mongoose')
 
 const InterventionRecordSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
   intervention: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Intervention",
@@ -25,10 +29,23 @@ const InterventionRecordSchema = new mongoose.Schema({
   date: {
     type: Date,
   },
-    user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-  },
+}, 
+{
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true }
+}
+)
+
+InterventionRecordSchema.pre(/^find/, function(next) {
+  this.populate({
+    path: 'intervention',
+    select: 'title'
+  }).populate({
+    path: 'student',
+    select: 'firstName lastName'
+  })
+
+  next();
 })
 
 module.exports = mongoose.model('InterventionRecord', InterventionRecordSchema)
