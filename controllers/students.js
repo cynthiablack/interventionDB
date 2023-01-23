@@ -8,7 +8,7 @@ module.exports = {
     try {
       const students = await Student.find({ user: req.user.id }).populate('records');
 
-      console.log(students)
+      // console.log(students)
       res.render("dashboard.ejs", { students: students, user: req.user });
     } catch (err) {
       console.log(err);

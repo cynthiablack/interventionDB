@@ -52,7 +52,7 @@ module.exports = {
       let record = await InterventionRecord.findById({ _id: req.params.id });
       // Delete record from db
       await InterventionRecord.remove({ _id: req.params.id });
-      console.log("Deleted intervention record");
+      // console.log("Deleted intervention record");
       res.redirect(`/students/${req.student.id}`);
     } catch (err) {
       res.redirect("/dashboard");
