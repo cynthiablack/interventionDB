@@ -4,7 +4,7 @@
   "description": "InterventionDB is a full-stack application designed to help K-12 teachers enter, track, and analyze student intervention data.",
   "main": "app.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node ./app.js",
+    "start": "cross-env NODE_ENV=production node app.js",
     "dev": "cross-env NODE_ENV=development nodemon app"
   },
   "repository": {
